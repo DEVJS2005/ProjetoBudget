@@ -1,0 +1,32 @@
+﻿@Model ProjetoBudget.Models.itensOrcamentarios
+@{
+    ViewBag.Title = "Listagem Orçamentos";
+}
+<h2> Listagem Orçamentos </h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> ID item orcamentario</th>
+            <th scope="col"> Descrição item</th>
+            <th scope="col"> Tipo Gasto  </th>
+            <th scope="col"> Natureza do Gasto  </th>
+            <th scope="col"> Valor Unitario </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (var item in Model)
+            {
+                <th scope="row">@item.idItemOrcamentario</th>
+                <td>@item.descrcaoItem</td>
+                <td>@item.tipoGasto</td>
+                <td>@item.naturezaGasto</td>
+                <td>@item.valorUnitario</td>
+
+                
+            }
+
+        </tr>
+    </tbody>
+</table>
+

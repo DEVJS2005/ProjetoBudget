@@ -1,0 +1,32 @@
+﻿@Model ProjetoBudget.Models.Orcamento
+@{
+    ViewBag.Title = "Listagem Orçamentos";
+}
+<h2> Listagem Orçamentos </h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> Nome orçamento</th>
+            <th scope="col"> Valor Aplicado  </th>
+            <th scope="col"> Data de inicio </th>
+            <th scope="col"> Data de fim </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (var item in Model)
+            {
+                <th scope="row">@item.nomeOrcamento</th>
+                <td>@item.valorAplicado</td>
+                <td>@item.dataInicio</td>
+                <td>@item.dataFim</td>
+                <td>
+                    <a href="/Area/areaEditar?id=@Model.idArea" class="btn btn-primary">Editar</a>
+                    <a href="/Area/areaExcluir" class="btn btn-danger">Excluir</a>
+                </td>
+            }
+
+        </tr>
+    </tbody>
+</table>
+<a href="/Area/areaIndex" class="btn btn-secondary">Voltar</a>

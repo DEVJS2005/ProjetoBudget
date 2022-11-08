@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BDBudgetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CentroGasto">
+          <Key>
+            <PropertyRef Name="idCentroGasto" />
+          </Key>
+          <Property Name="idCentroGasto" Type="int" Nullable="false" />
+          <Property Name="nomeCentroGasto" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="idFuncionario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Funcionario">
+          <Key>
+            <PropertyRef Name="idFuncionario" />
+          </Key>
+          <Property Name="idFuncionario" Type="int" Nullable="false" />
+          <Property Name="nomeFuncionario" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="matricula" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="senha" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="cargo" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="itensOrcamentarios">
+          <Key>
+            <PropertyRef Name="idItemOrcamentario" />
+          </Key>
+          <Property Name="idItemOrcamentario" Type="int" Nullable="false" />
+          <Property Name="descricaoItem" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipoGasto" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="naturezaGasto" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="valorUnitario" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrcaItem">
+          <Key>
+            <PropertyRef Name="idOrcaItem" />
+          </Key>
+          <Property Name="idOrcaItem" Type="int" Nullable="false" />
+          <Property Name="quantCompra" Type="int" Nullable="false" />
+          <Property Name="observacao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prioridade" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="idorcamento" Type="int" Nullable="false" />
+          <Property Name="idItemorcamentario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orcamento">
+          <Key>
+            <PropertyRef Name="idOrcamento" />
+          </Key>
+          <Property Name="idOrcamento" Type="int" Nullable="false" />
+          <Property Name="nomeOrcamento" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="dataInicio" Type="date" Nullable="false" />
+          <Property Name="dataFim" Type="date" Nullable="false" />
+          <Property Name="valorAplicado" Type="float" Nullable="false" />
+          <Property Name="idcentrogasto" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CentroGasto_Funcionario">
+          <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="1" />
+          <End Role="CentroGasto" Type="Self.CentroGasto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionario">
+              <PropertyRef Name="idFuncionario" />
+            </Principal>
+            <Dependent Role="CentroGasto">
+              <PropertyRef Name="idFuncionario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrcaItem_itensOrcamentarios">
+          <End Role="itensOrcamentarios" Type="Self.itensOrcamentarios" Multiplicity="1" />
+          <End Role="OrcaItem" Type="Self.OrcaItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="itensOrcamentarios">
+              <PropertyRef Name="idItemOrcamentario" />
+            </Principal>
+            <Dependent Role="OrcaItem">
+              <PropertyRef Name="idItemorcamentario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrcaItem_Orcamento">
+          <End Role="Orcamento" Type="Self.Orcamento" Multiplicity="1" />
+          <End Role="OrcaItem" Type="Self.OrcaItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orcamento">
+              <PropertyRef Name="idOrcamento" />
+            </Principal>
+            <Dependent Role="OrcaItem">
+              <PropertyRef Name="idorcamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orcamento_CentroGasto">
+          <End Role="CentroGasto" Type="Self.CentroGasto" Multiplicity="1" />
+          <End Role="Orcamento" Type="Self.Orcamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CentroGasto">
+              <PropertyRef Name="idCentroGasto" />
+            </Principal>
+            <Dependent Role="Orcamento">
+              <PropertyRef Name="idcentrogasto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDBudgetModelStoreContainer">
+          <EntitySet Name="CentroGasto" EntityType="Self.CentroGasto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Funcionario" EntityType="Self.Funcionario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="itensOrcamentarios" EntityType="Self.itensOrcamentarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrcaItem" EntityType="Self.OrcaItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orcamento" EntityType="Self.Orcamento" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CentroGasto_Funcionario" Association="Self.FK_CentroGasto_Funcionario">
+            <End Role="Funcionario" EntitySet="Funcionario" />
+            <End Role="CentroGasto" EntitySet="CentroGasto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrcaItem_itensOrcamentarios" Association="Self.FK_OrcaItem_itensOrcamentarios">
+            <End Role="itensOrcamentarios" EntitySet="itensOrcamentarios" />
+            <End Role="OrcaItem" EntitySet="OrcaItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrcaItem_Orcamento" Association="Self.FK_OrcaItem_Orcamento">
+            <End Role="Orcamento" EntitySet="Orcamento" />
+            <End Role="OrcaItem" EntitySet="OrcaItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orcamento_CentroGasto" Association="Self.FK_Orcamento_CentroGasto">
+            <End Role="CentroGasto" EntitySet="CentroGasto" />
+            <End Role="Orcamento" EntitySet="Orcamento" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDBudgetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CentroGasto">
+          <Key>
+            <PropertyRef Name="idCentroGasto" />
+          </Key>
+          <Property Name="idCentroGasto" Type="Int32" Nullable="false" />
+          <Property Name="nomeCentroGasto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idFuncionario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Funcionario" Relationship="Self.FK_CentroGasto_Funcionario" FromRole="CentroGasto" ToRole="Funcionario" />
+          <NavigationProperty Name="Orcamento" Relationship="Self.FK_Orcamento_CentroGasto" FromRole="CentroGasto" ToRole="Orcamento" />
+        </EntityType>
+        <EntityType Name="Funcionario">
+          <Key>
+            <PropertyRef Name="idFuncionario" />
+          </Key>
+          <Property Name="idFuncionario" Type="Int32" Nullable="false" />
+          <Property Name="nomeFuncionario" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matricula" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cargo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CentroGasto" Relationship="Self.FK_CentroGasto_Funcionario" FromRole="Funcionario" ToRole="CentroGasto" />
+        </EntityType>
+        <EntityType Name="itensOrcamentarios">
+          <Key>
+            <PropertyRef Name="idItemOrcamentario" />
+          </Key>
+          <Property Name="idItemOrcamentario" Type="Int32" Nullable="false" />
+          <Property Name="descricaoItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipoGasto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="naturezaGasto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="valorUnitario" Type="Double" Nullable="false" />
+          <NavigationProperty Name="OrcaItem" Relationship="Self.FK_OrcaItem_itensOrcamentarios" FromRole="itensOrcamentarios" ToRole="OrcaItem" />
+        </EntityType>
+        <EntityType Name="OrcaItem">
+          <Key>
+            <PropertyRef Name="idOrcaItem" />
+          </Key>
+          <Property Name="idOrcaItem" Type="Int32" Nullable="false" />
+          <Property Name="quantCompra" Type="Int32" Nullable="false" />
+          <Property Name="observacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prioridade" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idorcamento" Type="Int32" Nullable="false" />
+          <Property Name="idItemorcamentario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="itensOrcamentarios" Relationship="Self.FK_OrcaItem_itensOrcamentarios" FromRole="OrcaItem" ToRole="itensOrcamentarios" />
+          <NavigationProperty Name="Orcamento" Relationship="Self.FK_OrcaItem_Orcamento" FromRole="OrcaItem" ToRole="Orcamento" />
+        </EntityType>
+        <EntityType Name="Orcamento">
+          <Key>
+            <PropertyRef Name="idOrcamento" />
+          </Key>
+          <Property Name="idOrcamento" Type="Int32" Nullable="false" />
+          <Property Name="nomeOrcamento" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dataInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dataFim" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="valorAplicado" Type="Double" Nullable="false" />
+          <Property Name="idcentrogasto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CentroGasto" Relationship="Self.FK_Orcamento_CentroGasto" FromRole="Orcamento" ToRole="CentroGasto" />
+          <NavigationProperty Name="OrcaItem" Relationship="Self.FK_OrcaItem_Orcamento" FromRole="Orcamento" ToRole="OrcaItem" />
+        </EntityType>
+        <Association Name="FK_CentroGasto_Funcionario">
+          <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="1" />
+          <End Role="CentroGasto" Type="Self.CentroGasto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funcionario">
+              <PropertyRef Name="idFuncionario" />
+            </Principal>
+            <Dependent Role="CentroGasto">
+              <PropertyRef Name="idFuncionario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orcamento_CentroGasto">
+          <End Role="CentroGasto" Type="Self.CentroGasto" Multiplicity="1" />
+          <End Role="Orcamento" Type="Self.Orcamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CentroGasto">
+              <PropertyRef Name="idCentroGasto" />
+            </Principal>
+            <Dependent Role="Orcamento">
+              <PropertyRef Name="idcentrogasto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrcaItem_itensOrcamentarios">
+          <End Role="itensOrcamentarios" Type="Self.itensOrcamentarios" Multiplicity="1" />
+          <End Role="OrcaItem" Type="Self.OrcaItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="itensOrcamentarios">
+              <PropertyRef Name="idItemOrcamentario" />
+            </Principal>
+            <Dependent Role="OrcaItem">
+              <PropertyRef Name="idItemorcamentario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrcaItem_Orcamento">
+          <End Role="Orcamento" Type="Self.Orcamento" Multiplicity="1" />
+          <End Role="OrcaItem" Type="Self.OrcaItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orcamento">
+              <PropertyRef Name="idOrcamento" />
+            </Principal>
+            <Dependent Role="OrcaItem">
+              <PropertyRef Name="idorcamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDBudgetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CentroGasto" EntityType="Self.CentroGasto" />
+          <EntitySet Name="Funcionario" EntityType="Self.Funcionario" />
+          <EntitySet Name="itensOrcamentarios" EntityType="Self.itensOrcamentarios" />
+          <EntitySet Name="OrcaItem" EntityType="Self.OrcaItem" />
+          <EntitySet Name="Orcamento" EntityType="Self.Orcamento" />
+          <AssociationSet Name="FK_CentroGasto_Funcionario" Association="Self.FK_CentroGasto_Funcionario">
+            <End Role="Funcionario" EntitySet="Funcionario" />
+            <End Role="CentroGasto" EntitySet="CentroGasto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orcamento_CentroGasto" Association="Self.FK_Orcamento_CentroGasto">
+            <End Role="CentroGasto" EntitySet="CentroGasto" />
+            <End Role="Orcamento" EntitySet="Orcamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrcaItem_itensOrcamentarios" Association="Self.FK_OrcaItem_itensOrcamentarios">
+            <End Role="itensOrcamentarios" EntitySet="itensOrcamentarios" />
+            <End Role="OrcaItem" EntitySet="OrcaItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrcaItem_Orcamento" Association="Self.FK_OrcaItem_Orcamento">
+            <End Role="Orcamento" EntitySet="Orcamento" />
+            <End Role="OrcaItem" EntitySet="OrcaItem" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDBudgetModelStoreContainer" CdmEntityContainer="BDBudgetEntities">
+          <EntitySetMapping Name="CentroGasto">
+            <EntityTypeMapping TypeName="BDBudgetModel.CentroGasto">
+              <MappingFragment StoreEntitySet="CentroGasto">
+                <ScalarProperty Name="idCentroGasto" ColumnName="idCentroGasto" />
+                <ScalarProperty Name="nomeCentroGasto" ColumnName="nomeCentroGasto" />
+                <ScalarProperty Name="idFuncionario" ColumnName="idFuncionario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Funcionario">
+            <EntityTypeMapping TypeName="BDBudgetModel.Funcionario">
+              <MappingFragment StoreEntitySet="Funcionario">
+                <ScalarProperty Name="idFuncionario" ColumnName="idFuncionario" />
+                <ScalarProperty Name="nomeFuncionario" ColumnName="nomeFuncionario" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="cargo" ColumnName="cargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="itensOrcamentarios">
+            <EntityTypeMapping TypeName="BDBudgetModel.itensOrcamentarios">
+              <MappingFragment StoreEntitySet="itensOrcamentarios">
+                <ScalarProperty Name="idItemOrcamentario" ColumnName="idItemOrcamentario" />
+                <ScalarProperty Name="descricaoItem" ColumnName="descricaoItem" />
+                <ScalarProperty Name="tipoGasto" ColumnName="tipoGasto" />
+                <ScalarProperty Name="naturezaGasto" ColumnName="naturezaGasto" />
+                <ScalarProperty Name="valorUnitario" ColumnName="valorUnitario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrcaItem">
+            <EntityTypeMapping TypeName="BDBudgetModel.OrcaItem">
+              <MappingFragment StoreEntitySet="OrcaItem">
+                <ScalarProperty Name="idOrcaItem" ColumnName="idOrcaItem" />
+                <ScalarProperty Name="quantCompra" ColumnName="quantCompra" />
+                <ScalarProperty Name="observacao" ColumnName="observacao" />
+                <ScalarProperty Name="prioridade" ColumnName="prioridade" />
+                <ScalarProperty Name="idorcamento" ColumnName="idorcamento" />
+                <ScalarProperty Name="idItemorcamentario" ColumnName="idItemorcamentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orcamento">
+            <EntityTypeMapping TypeName="BDBudgetModel.Orcamento">
+              <MappingFragment StoreEntitySet="Orcamento">
+                <ScalarProperty Name="idOrcamento" ColumnName="idOrcamento" />
+                <ScalarProperty Name="nomeOrcamento" ColumnName="nomeOrcamento" />
+                <ScalarProperty Name="dataInicio" ColumnName="dataInicio" />
+                <ScalarProperty Name="dataFim" ColumnName="dataFim" />
+                <ScalarProperty Name="valorAplicado" ColumnName="valorAplicado" />
+                <ScalarProperty Name="idcentrogasto" ColumnName="idcentrogasto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

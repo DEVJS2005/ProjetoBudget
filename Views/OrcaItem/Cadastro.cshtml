@@ -1,0 +1,37 @@
+﻿@Model ProjetoBudget.Models.itensOrcamentarios
+
+@{
+    ViewBag.Title = "Elencar itens";
+}
+
+<form name="CadastroOrcamento" method="post" action="/Orcamento/cadastro">
+    <div class="form-group">
+        
+        <label for="exampleInputEmail1"> Item: </label>
+        <select name="itens">
+            @foreach (var item in Model)
+             {
+                <option value="@item.idItemOrcamentario">
+                    @item.descricaoItem
+                </option>
+             }
+        </select>
+
+    </div>
+
+    <div>
+        <label> Valor alocado: </label>
+        <input type="text" name="prioridade" class="form-check-input" id="exampleCheck1" /><br />
+        <label>  Prioridade: </label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"> Alta
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"> Média
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"> Baixa
+        </div>
+
+        <button type="submit" class="btn btn-primary"> Registrar </button>
+</form>
