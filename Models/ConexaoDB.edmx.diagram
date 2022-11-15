@@ -4,14 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="53477e2adba54a25a7352aa322fc70b3" Name="Diagram1">
+      <Diagram DiagramId="cab6e67fd0184c57a73011fd9c2f9df0" Name="Diagram1">
         <EntityTypeShape EntityType="BDBudgetModel.CentroGasto" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BDBudgetModel.Funcionario" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDBudgetModel.itensOrcamentarios" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDBudgetModel.itensOrcamentarios" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDBudgetModel.naturezaGasto" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BDBudgetModel.OrcaItem" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="BDBudgetModel.Orcamento" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="BDBudgetModel.FK_CentroGasto_Funcionario" ManuallyRouted="false" />
         <AssociationConnector Association="BDBudgetModel.FK_Orcamento_CentroGasto" ManuallyRouted="false" />
+        <AssociationConnector Association="BDBudgetModel.FK_itensOrcamentarios_naturezaGasto" ManuallyRouted="false" />
         <AssociationConnector Association="BDBudgetModel.FK_OrcaItem_itensOrcamentarios" ManuallyRouted="false" />
         <AssociationConnector Association="BDBudgetModel.FK_OrcaItem_Orcamento" ManuallyRouted="false" />
       </Diagram>
