@@ -1,4 +1,4 @@
-﻿@Model ProjetoBudget.Models.itensOrcamentarios
+﻿@Model ProjetoBudget.Models.itemOrcamentario
 
 @{
     ViewBag.Title = "Elencar itens";
@@ -6,15 +6,15 @@
 
 <form name="CadastroOrcamento" method="post" action="/Orcamento/cadastro">
     <div class="form-group">
-        
+
         <label for="exampleInputEmail1"> Item: </label>
         <select name="itens">
             @foreach (var item in Model)
-             {
+            {
                 <option value="@item.idItemOrcamentario">
                     @item.descricaoItem
                 </option>
-             }
+            }
         </select>
 
     </div>
@@ -22,9 +22,10 @@
     <div>
         <label> Valor alocado: </label>
         <input type="text" name="prioridade" class="form-check-input" id="exampleCheck1" /><br />
+
         <label>  Prioridade: </label>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"> Alta
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="alterarVisibilidade('divObs')"> Alta
         </div>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"> Média
@@ -32,6 +33,23 @@
         <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"> Baixa
         </div>
+    </div>
+    <div class="form-check" id="divObs" style="display:none">
+        <label> Observação: </label>
+        <input class="form-check-input" type="text" name="flexRadioDefault" id="flexRadioDefault2" maxlength="500">
+    </div>
 
-        <button type="submit" class="btn btn-primary"> Registrar </button>
+
+    <button type="submit" class="btn btn-primary"> Registrar </button>
 </form>
+@section Scripts {
+    <script>
+        function alterarVisibilidade(id) {
+        var display = document.getElementById(id).style.display;
+        if (display == "none")
+        document.getElementById(id).style.display = 'block';
+        else
+        document.getElementById(id).style.display = 'none';
+        }
+    </script>
+}
