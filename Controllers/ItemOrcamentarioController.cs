@@ -8,7 +8,10 @@ namespace Projeto_Budget.Controllers
     {
         BDBudgetEntities db = new BDBudgetEntities();
         // GET: ItemOrcamentoController
-        
+        public ActionResult Index() 
+        { 
+            return View(db.itensOrcamentarios.ToList());
+        }
         
         [HttpGet]
         public ActionResult Cadastro()
@@ -17,7 +20,7 @@ namespace Projeto_Budget.Controllers
         }
 
         [HttpPost]
-        public ActionResult cadastro(string descricaoItem, string tipoGasto, int TipoItem, float? valorUnitario)
+        public ActionResult Cadastro(string descricaoItem, string tipoGasto, int TipoItem, float? valorUnitario)
         {
             TipoItem tpI = db.TipoItem.Find(TipoItem);
             
@@ -33,7 +36,7 @@ namespace Projeto_Budget.Controllers
             }
             db.itensOrcamentarios.Add(Io);
             db.SaveChanges();
-            return RedirectToAction("itemOrcamentario","index");
+            return View("index");
         }
     }
 }

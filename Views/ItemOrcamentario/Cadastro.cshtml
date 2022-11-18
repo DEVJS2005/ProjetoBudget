@@ -4,7 +4,7 @@
     ViewBag.Title = "Item Orçamentario";
 }
 
-<form name="CadastroItemOrcamentario" action="/ItensOrcamentarios/Cadastro" method="post">
+<form name="CadastroItemOrcamentario" action="/ItemOrcamentario/Cadastro" method="post">
     <label> Descrição do Item:  </label>
     <input type="text" name="DescricaoItem" class="form-check-input" id="exampleCheck1" /><br />
 
@@ -13,7 +13,7 @@
     <select name="tipoGasto">
         <option>
         </option>
-        <option value="Custo">
+        <option value="Custo" onclick="mudarEstado('vlrUni',)">
             Custo
         </option>
         <option value="Despesa">
@@ -27,13 +27,13 @@
     <label for="exampleInputEmail1"> Categoria item: </label>
     <select name="TipoItem">
         @foreach (var item in Model)
-         {
+        {
             <option>
             </option>
             <option value="@item.idTipoItem">
                 @item.nomeTipoItem
             </option>
-         }
+        }
     </select>
 
     <br />
@@ -43,17 +43,18 @@
         <input type="text" name="valorUnitario" class="form-check-input" id="exampleCheck1" />
     </div>
 
-
-
     <button type="submit" class="btn btn-primary"> Registrar </button>
+
 </form>
-<script>
-    function mudarEstado(id, idNat) {
-        if (idNat == 1) 
-            var display = document.getElementById(id).style.display;
-            if (display == "none")
-                document.getElementById(id).style.display = 'block';
-            else
-                document.getElementById(id).style.display = 'none';
-    }
-</script>
+@section Scripts {
+    <script>
+        function mudarEstado(id) 
+        {
+           var display = document.getElementById(id).style.display;
+           if (display == "none")
+             document.getElementById(id).style.display = 'block';
+           else
+             document.getElementById(id).style.display = 'none';
+        }
+    </script>
+}
