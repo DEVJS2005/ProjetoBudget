@@ -316,13 +316,13 @@
     <Compile Include="Models\itensOrcamentarios.cs">
       <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\naturezaGasto.cs">
-      <DependentUpon>ConexaoDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\OrcaItem.cs">
       <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Orcamento.cs">
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoItem.cs">
       <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,11 +8,32 @@ namespace Projeto_Budget.Controllers
     {
         BDBudgetEntities db = new BDBudgetEntities();
         // GET: ItemOrcamentoController
+        
+        
+        [HttpGet]
         public ActionResult Cadastro()
         {
-            return View(db.naturezaGasto.ToList());
+            return View(db.TipoItem.ToList());
         }
 
-
+        [HttpPost]
+        public ActionResult cadastro(string descricaoItem, string tipoGasto, int TipoItem, float? valorUnitario)
+        {
+            TipoItem tpI = db.TipoItem.Find(TipoItem);
+            
+            itensOrcamentarios Io = new itensOrcamentarios();
+            Io.descricaoItem = descricaoItem;       
+            Io.valorUnitario = valorUnitario;
+            Io.tipoGasto = tipoGasto;
+            Io.idTipoItem = TipoItem;
+            Io.TipoItem = tpI;
+            if(valorUnitario != null)
+            {
+                Io.valorUnitario = valorUnitario;   
+            }
+            db.itensOrcamentarios.Add(Io);
+            db.SaveChanges();
+            return RedirectToAction("itemOrcamentario","index");
+        }
     }
 }

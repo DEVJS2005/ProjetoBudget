@@ -12,16 +12,16 @@ namespace ProjetoBudget.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class naturezaGasto
+    public partial class TipoItem
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public naturezaGasto()
+        public TipoItem()
         {
             this.itensOrcamentarios = new HashSet<itensOrcamentarios>();
         }
     
-        public int idNaturezaGasto { get; set; }
-        public string nomeNatureza { get; set; }
+        public int idTipoItem { get; set; }
+        public string nomeTipoItem { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<itensOrcamentarios> itensOrcamentarios { get; set; }

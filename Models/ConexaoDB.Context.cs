@@ -28,8 +28,8 @@ namespace ProjetoBudget.Models
         public virtual DbSet<CentroGasto> CentroGasto { get; set; }
         public virtual DbSet<Funcionario> Funcionario { get; set; }
         public virtual DbSet<itensOrcamentarios> itensOrcamentarios { get; set; }
-        public virtual DbSet<naturezaGasto> naturezaGasto { get; set; }
         public virtual DbSet<OrcaItem> OrcaItem { get; set; }
         public virtual DbSet<Orcamento> Orcamento { get; set; }
+        public virtual DbSet<TipoItem> TipoItem { get; set; }
     }
 }

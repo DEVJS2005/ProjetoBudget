@@ -24,9 +24,9 @@ namespace ProjetoBudget.Models
         public string descricaoItem { get; set; }
         public string tipoGasto { get; set; }
         public Nullable<double> valorUnitario { get; set; }
-        public int idNaturezaGasto { get; set; }
+        public int idTipoItem { get; set; }
     
-        public virtual naturezaGasto naturezaGasto { get; set; }
+        public virtual TipoItem TipoItem { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrcaItem> OrcaItem { get; set; }
     }

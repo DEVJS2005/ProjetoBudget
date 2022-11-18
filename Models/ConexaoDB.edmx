@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="idCentroGasto" />
           </Key>
-          <Property Name="idCentroGasto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCentroGasto" Type="int" Nullable="false" />
           <Property Name="nomeCentroGasto" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="idFuncionario" Type="int" Nullable="false" />
         </EntityType>
@@ -17,34 +17,27 @@
           <Key>
             <PropertyRef Name="idFuncionario" />
           </Key>
-          <Property Name="idFuncionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFuncionario" Type="int" Nullable="false" />
           <Property Name="nomeFuncionario" Type="varchar" MaxLength="35" Nullable="false" />
           <Property Name="matricula" Type="char" MaxLength="6" Nullable="false" />
           <Property Name="senha" Type="char" MaxLength="8" Nullable="false" />
-          <Property Name="cargo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="cargo" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="itensOrcamentarios">
           <Key>
             <PropertyRef Name="idItemOrcamentario" />
           </Key>
-          <Property Name="idItemOrcamentario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idItemOrcamentario" Type="int" Nullable="false" />
           <Property Name="descricaoItem" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="tipoGasto" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="valorUnitario" Type="float" />
-          <Property Name="idNaturezaGasto" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="naturezaGasto">
-          <Key>
-            <PropertyRef Name="idNaturezaGasto" />
-          </Key>
-          <Property Name="idNaturezaGasto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nomeNatureza" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="idTipoItem" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OrcaItem">
           <Key>
             <PropertyRef Name="idOrcaItem" />
           </Key>
-          <Property Name="idOrcaItem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idOrcaItem" Type="int" Nullable="false" />
           <Property Name="quantCompra" Type="int" Nullable="false" />
           <Property Name="observacao" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="prioridade" Type="varchar" MaxLength="25" Nullable="false" />
@@ -55,12 +48,19 @@
           <Key>
             <PropertyRef Name="idOrcamento" />
           </Key>
-          <Property Name="idOrcamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idOrcamento" Type="int" Nullable="false" />
           <Property Name="nomeOrcamento" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="dataInicio" Type="date" Nullable="false" />
           <Property Name="dataFim" Type="date" Nullable="false" />
           <Property Name="valorAplicado" Type="float" Nullable="false" />
           <Property Name="idcentrogasto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoItem">
+          <Key>
+            <PropertyRef Name="idTipoItem" />
+          </Key>
+          <Property Name="idTipoItem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomeTipoItem" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_CentroGasto_Funcionario">
           <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="1" />
@@ -74,15 +74,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_itensOrcamentarios_naturezaGasto">
-          <End Role="naturezaGasto" Type="Self.naturezaGasto" Multiplicity="1" />
+        <Association Name="FK_itensOrcamentarios_TipoItem">
+          <End Role="TipoItem" Type="Self.TipoItem" Multiplicity="1" />
           <End Role="itensOrcamentarios" Type="Self.itensOrcamentarios" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="naturezaGasto">
-              <PropertyRef Name="idNaturezaGasto" />
+            <Principal Role="TipoItem">
+              <PropertyRef Name="idTipoItem" />
             </Principal>
             <Dependent Role="itensOrcamentarios">
-              <PropertyRef Name="idNaturezaGasto" />
+              <PropertyRef Name="idTipoItem" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -126,15 +126,15 @@
           <EntitySet Name="CentroGasto" EntityType="Self.CentroGasto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Funcionario" EntityType="Self.Funcionario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="itensOrcamentarios" EntityType="Self.itensOrcamentarios" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="naturezaGasto" EntityType="Self.naturezaGasto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrcaItem" EntityType="Self.OrcaItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orcamento" EntityType="Self.Orcamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoItem" EntityType="Self.TipoItem" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CentroGasto_Funcionario" Association="Self.FK_CentroGasto_Funcionario">
             <End Role="Funcionario" EntitySet="Funcionario" />
             <End Role="CentroGasto" EntitySet="CentroGasto" />
           </AssociationSet>
-          <AssociationSet Name="FK_itensOrcamentarios_naturezaGasto" Association="Self.FK_itensOrcamentarios_naturezaGasto">
-            <End Role="naturezaGasto" EntitySet="naturezaGasto" />
+          <AssociationSet Name="FK_itensOrcamentarios_TipoItem" Association="Self.FK_itensOrcamentarios_TipoItem">
+            <End Role="TipoItem" EntitySet="TipoItem" />
             <End Role="itensOrcamentarios" EntitySet="itensOrcamentarios" />
           </AssociationSet>
           <AssociationSet Name="FK_OrcaItem_itensOrcamentarios" Association="Self.FK_OrcaItem_itensOrcamentarios">
@@ -159,7 +159,7 @@
           <Key>
             <PropertyRef Name="idCentroGasto" />
           </Key>
-          <Property Name="idCentroGasto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCentroGasto" Type="Int32" Nullable="false" />
           <Property Name="nomeCentroGasto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idFuncionario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Funcionario" Relationship="Self.FK_CentroGasto_Funcionario" FromRole="CentroGasto" ToRole="Funcionario" />
@@ -169,38 +169,30 @@
           <Key>
             <PropertyRef Name="idFuncionario" />
           </Key>
-          <Property Name="idFuncionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFuncionario" Type="Int32" Nullable="false" />
           <Property Name="nomeFuncionario" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="matricula" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="senha" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="cargo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cargo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CentroGasto" Relationship="Self.FK_CentroGasto_Funcionario" FromRole="Funcionario" ToRole="CentroGasto" />
         </EntityType>
         <EntityType Name="itensOrcamentarios">
           <Key>
             <PropertyRef Name="idItemOrcamentario" />
           </Key>
-          <Property Name="idItemOrcamentario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idItemOrcamentario" Type="Int32" Nullable="false" />
           <Property Name="descricaoItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tipoGasto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="valorUnitario" Type="Double" />
-          <Property Name="idNaturezaGasto" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="naturezaGasto" Relationship="Self.FK_itensOrcamentarios_naturezaGasto" FromRole="itensOrcamentarios" ToRole="naturezaGasto" />
+          <Property Name="idTipoItem" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipoItem" Relationship="Self.FK_itensOrcamentarios_TipoItem" FromRole="itensOrcamentarios" ToRole="TipoItem" />
           <NavigationProperty Name="OrcaItem" Relationship="Self.FK_OrcaItem_itensOrcamentarios" FromRole="itensOrcamentarios" ToRole="OrcaItem" />
-        </EntityType>
-        <EntityType Name="naturezaGasto">
-          <Key>
-            <PropertyRef Name="idNaturezaGasto" />
-          </Key>
-          <Property Name="idNaturezaGasto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nomeNatureza" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="itensOrcamentarios" Relationship="Self.FK_itensOrcamentarios_naturezaGasto" FromRole="naturezaGasto" ToRole="itensOrcamentarios" />
         </EntityType>
         <EntityType Name="OrcaItem">
           <Key>
             <PropertyRef Name="idOrcaItem" />
           </Key>
-          <Property Name="idOrcaItem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idOrcaItem" Type="Int32" Nullable="false" />
           <Property Name="quantCompra" Type="Int32" Nullable="false" />
           <Property Name="observacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="prioridade" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
@@ -213,7 +205,7 @@
           <Key>
             <PropertyRef Name="idOrcamento" />
           </Key>
-          <Property Name="idOrcamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idOrcamento" Type="Int32" Nullable="false" />
           <Property Name="nomeOrcamento" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="dataInicio" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="dataFim" Type="DateTime" Nullable="false" Precision="0" />
@@ -221,6 +213,14 @@
           <Property Name="idcentrogasto" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CentroGasto" Relationship="Self.FK_Orcamento_CentroGasto" FromRole="Orcamento" ToRole="CentroGasto" />
           <NavigationProperty Name="OrcaItem" Relationship="Self.FK_OrcaItem_Orcamento" FromRole="Orcamento" ToRole="OrcaItem" />
+        </EntityType>
+        <EntityType Name="TipoItem">
+          <Key>
+            <PropertyRef Name="idTipoItem" />
+          </Key>
+          <Property Name="idTipoItem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomeTipoItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="itensOrcamentarios" Relationship="Self.FK_itensOrcamentarios_TipoItem" FromRole="TipoItem" ToRole="itensOrcamentarios" />
         </EntityType>
         <Association Name="FK_CentroGasto_Funcionario">
           <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="1" />
@@ -246,15 +246,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_itensOrcamentarios_naturezaGasto">
-          <End Role="naturezaGasto" Type="Self.naturezaGasto" Multiplicity="1" />
+        <Association Name="FK_itensOrcamentarios_TipoItem">
+          <End Role="TipoItem" Type="Self.TipoItem" Multiplicity="1" />
           <End Role="itensOrcamentarios" Type="Self.itensOrcamentarios" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="naturezaGasto">
-              <PropertyRef Name="idNaturezaGasto" />
+            <Principal Role="TipoItem">
+              <PropertyRef Name="idTipoItem" />
             </Principal>
             <Dependent Role="itensOrcamentarios">
-              <PropertyRef Name="idNaturezaGasto" />
+              <PropertyRef Name="idTipoItem" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -286,9 +286,9 @@
           <EntitySet Name="CentroGasto" EntityType="Self.CentroGasto" />
           <EntitySet Name="Funcionario" EntityType="Self.Funcionario" />
           <EntitySet Name="itensOrcamentarios" EntityType="Self.itensOrcamentarios" />
-          <EntitySet Name="naturezaGasto" EntityType="Self.naturezaGasto" />
           <EntitySet Name="OrcaItem" EntityType="Self.OrcaItem" />
           <EntitySet Name="Orcamento" EntityType="Self.Orcamento" />
+          <EntitySet Name="TipoItem" EntityType="Self.TipoItem" />
           <AssociationSet Name="FK_CentroGasto_Funcionario" Association="Self.FK_CentroGasto_Funcionario">
             <End Role="Funcionario" EntitySet="Funcionario" />
             <End Role="CentroGasto" EntitySet="CentroGasto" />
@@ -297,8 +297,8 @@
             <End Role="CentroGasto" EntitySet="CentroGasto" />
             <End Role="Orcamento" EntitySet="Orcamento" />
           </AssociationSet>
-          <AssociationSet Name="FK_itensOrcamentarios_naturezaGasto" Association="Self.FK_itensOrcamentarios_naturezaGasto">
-            <End Role="naturezaGasto" EntitySet="naturezaGasto" />
+          <AssociationSet Name="FK_itensOrcamentarios_TipoItem" Association="Self.FK_itensOrcamentarios_TipoItem">
+            <End Role="TipoItem" EntitySet="TipoItem" />
             <End Role="itensOrcamentarios" EntitySet="itensOrcamentarios" />
           </AssociationSet>
           <AssociationSet Name="FK_OrcaItem_itensOrcamentarios" Association="Self.FK_OrcaItem_itensOrcamentarios">
@@ -343,15 +343,7 @@
                 <ScalarProperty Name="descricaoItem" ColumnName="descricaoItem" />
                 <ScalarProperty Name="tipoGasto" ColumnName="tipoGasto" />
                 <ScalarProperty Name="valorUnitario" ColumnName="valorUnitario" />
-                <ScalarProperty Name="idNaturezaGasto" ColumnName="idNaturezaGasto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="naturezaGasto">
-            <EntityTypeMapping TypeName="BDBudgetModel.naturezaGasto">
-              <MappingFragment StoreEntitySet="naturezaGasto">
-                <ScalarProperty Name="idNaturezaGasto" ColumnName="idNaturezaGasto" />
-                <ScalarProperty Name="nomeNatureza" ColumnName="nomeNatureza" />
+                <ScalarProperty Name="idTipoItem" ColumnName="idTipoItem" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -376,6 +368,14 @@
                 <ScalarProperty Name="dataFim" ColumnName="dataFim" />
                 <ScalarProperty Name="valorAplicado" ColumnName="valorAplicado" />
                 <ScalarProperty Name="idcentrogasto" ColumnName="idcentrogasto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoItem">
+            <EntityTypeMapping TypeName="BDBudgetModel.TipoItem">
+              <MappingFragment StoreEntitySet="TipoItem">
+                <ScalarProperty Name="idTipoItem" ColumnName="idTipoItem" />
+                <ScalarProperty Name="nomeTipoItem" ColumnName="nomeTipoItem" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

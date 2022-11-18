@@ -1,4 +1,4 @@
-﻿@Model ProjetoBudget.Models.naturezaGasto
+﻿@Model ProjetoBudget.Models.TipoItem
 
 @{
     ViewBag.Title = "Item Orçamentario";
@@ -10,48 +10,50 @@
 
 
     <label for="exampleInputEmail1"> Tipo de Gasto: </label>
-    <select name="tipoGasto" >
-        <option value="1" onclick="">
+    <select name="tipoGasto">
+        <option>
+        </option>
+        <option value="Custo">
             Custo
         </option>
-        <option value="2">
+        <option value="Despesa">
             Despesa
         </option>
-        <option value="3" >
+        <option value="Investimento">
             Investimento
         </option>
     </select>
 
-    <label for="exampleInputEmail1"> Natureza Gasto: </label>
-    <select name="naturezaGasto">
-        @foreach(var item in Model) 
+    <label for="exampleInputEmail1"> Categoria item: </label>
+    <select name="TipoItem">
+        @foreach (var item in Model)
          {
-            <option value="@item.idNaturezaGasto" onclick="mudarEstado('vlrUni',@item.idNaturezaGasto)">
-                @item.nomeNatureza
+            <option>
+            </option>
+            <option value="@item.idTipoItem">
+                @item.nomeTipoItem
             </option>
          }
     </select>
 
-    <br/>
+    <br />
 
-    <div id="vlrUni">
+    <div id="vlrUni" style="display:none">
         <label> Valor Unitario: </label>
         <input type="text" name="valorUnitario" class="form-check-input" id="exampleCheck1" />
     </div>
-   
+
 
 
     <button type="submit" class="btn btn-primary"> Registrar </button>
 </form>
 <script>
-    function mudarEstado(id,idNat) {
-        if (idNat == 1) {
+    function mudarEstado(id, idNat) {
+        if (idNat == 1) 
             var display = document.getElementById(id).style.display;
             if (display == "none")
-                document.getElementById(el).style.display = 'block';
+                document.getElementById(id).style.display = 'block';
             else
-                document.getElementById(el).style.display = 'none';
-        }
-        
+                document.getElementById(id).style.display = 'none';
     }
 </script>
