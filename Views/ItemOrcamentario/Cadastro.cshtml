@@ -3,29 +3,36 @@
 @{
     ViewBag.Title = "Item Orçamentario";
 }
-
+<div class="text-center">
+    <h1 id="tituloPcad">Cadastro</h1>
 <form name="CadastroItemOrcamentario" action="/ItensOrcamentarios/Cadastro" method="post">
-    <label> Descrição do Item:  </label>
+    <br />
+    <label class="titulo_cad"> Descrição do Item:  </label>
+    <br />
     <input type="text" name="DescricaoItem" class="form-check-input" id="exampleCheck1" /><br />
+    <br />
 
-
-    <label for="exampleInputEmail1"> Tipo de Gasto: </label>
-    <select name="tipoGasto">
+    <label for="exampleInputEmail1" class="titulo_cad"> Tipo de Gasto: </label>
+    <br />
+    <select name="tipoGasto" class="tipo_gasto" >
         <option>
         </option>
-        <option value="Custo">
+        <option value="Custo" >
             Custo
         </option>
-        <option value="Despesa">
+        <option value="Despesa" >
             Despesa
         </option>
-        <option value="Investimento">
+        <option value="Investimento" >
             Investimento
         </option>
     </select>
-
-    <label for="exampleInputEmail1"> Categoria item: </label>
-    <select name="TipoItem">
+    <br />
+    <br />
+    <label for="exampleInputEmail1" class="titulo_cad"> Categoria item: </label>
+    <br />
+    
+    <select name="TipoItem" class="categ_item">
         @foreach (var item in Model)
          {
             <option>
@@ -43,10 +50,12 @@
         <input type="text" name="valorUnitario" class="form-check-input" id="exampleCheck1" />
     </div>
 
-
-
+    <br />
+    <br />
     <button type="submit" class="btn btn-primary"> Registrar </button>
 </form>
+</div>
+
 <script>
     function mudarEstado(id, idNat) {
         if (idNat == 1) 

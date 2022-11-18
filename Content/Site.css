@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #0c0D38;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,33 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+.titulo_cad {
+    color: #D2D4D8;
+    font-size:18px;
+}
+.form-check-input {
+    background-color: #363838;
+    color:white;
+    padding-left:18px;
+    margin:5px;
+}
+.tipo_gasto {
+    background-color: #363838;
+    color:white;
+    font-size:14px;
+    padding-left:86px;
+    text-align:center;
+    margin:5px;
+}
+.categ_item {
+    background-color: #363838;
+    color:white;
+    font-size:14px;
+    padding-left:162px;
+    margin:5px;
+}
+#tituloPcad {
+    color: #D2D4D6;
+    font-size:44px;
 }
