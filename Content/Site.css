@@ -23,6 +23,7 @@ select,
 textarea {
     max-width: 280px;
 }
+/*CSS das Views de ItemOrcamentario: */
 .titulo_cad {
     color: #D2D4D8;
     font-size:18px;
@@ -55,4 +56,38 @@ textarea {
 .tablecad {
     color:white;
 
+}
+/*CSS das views de OrcaItem: */
+.titulo_item {
+    color:#D2D4D8;
+    font-size: 18px;
+    margin:5px;
+}
+.itens_orc {
+    background-color: #363838;
+    color: white;
+    font-size: 14px;
+    padding-left: 162px;
+    margin: 5px;
+}
+/*CSS das Views de Orcamento*/
+.titulo_orc {
+    color: #D2D4D8;
+    font-size: 18px;
+    margin: 5px;
+}
+.input_setor {
+    background-color: #363838;
+    color: white;
+    font-size: 14px;
+    padding-left: 168px;
+    margin: 5px
+}
+.titulo_orc1 {
+    color: #D2D4D6;
+    font-size: 44px;
+}
+.list {
+    color: #D2D4D6;
+    font-size:18px;
 }

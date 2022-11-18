@@ -13,7 +13,7 @@ namespace Projeto_Budget.Controllers
         // GET: Orcamento
         public ActionResult cadastro()
         {
-            return View(db.CentroGasto.ToList());
+          return View(db.CentroGasto.ToList());
         }
 
         [HttpPost]
@@ -36,6 +36,9 @@ namespace Projeto_Budget.Controllers
 
             return RedirectToAction("Cadastro","Orcaitem");
         }
-
+        public ActionResult Lista()
+        {
+            return View();
+        }
     }
 }

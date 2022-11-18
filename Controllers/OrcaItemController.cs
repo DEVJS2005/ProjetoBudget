@@ -13,7 +13,7 @@ namespace ProjetoBudget.Controllers
         // GET: OrcaItem
         public ActionResult Cadastro()
         {
-            return View(bd.itensOrcamentarios.ToList());
+           return View(bd.itensOrcamentarios.ToList());
         }
     }
 }

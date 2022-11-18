@@ -1,11 +1,15 @@
 ﻿@Model ProjetoBudget.Models.Orcamento
 @{
-    ViewBag.Title = "Listagem Orçamentos";
+    ViewBag.Title = "Listagem Orcamentos";
 }
-<h2> Listagem Orçamentos </h2>
+
+<br />
+<h2 class="titulo_orc1"> Listagem Orçamentos </h2>
+<br />
+<br />
 <table class="table">
     <thead>
-        <tr>
+        <tr class="list">
             <th scope="col"> Nome orçamento</th>
             <th scope="col"> Valor Aplicado  </th>
             <th scope="col"> Data de inicio </th>
@@ -21,12 +25,13 @@
                 <td>@item.dataInicio</td>
                 <td>@item.dataFim</td>
                 <td>
-                    <a href="/Area/areaEditar?id=@Model.idArea" class="btn btn-primary">Editar</a>
-                    <a href="/Area/areaExcluir" class="btn btn-danger">Excluir</a>
+                    <a href="/Area/areaEditar?id=@Model.idArea" role="button" class="btn btn-primary">Editar</a>
+                    <a href="/Area/areaExcluir" role="button" class="btn btn-danger">Excluir</a>
                 </td>
             }
 
-        </tr>
+            </tr>
     </tbody>
 </table>
-<a href="/Area/areaIndex" class="btn btn-secondary">Voltar</a>
+<br />
+<a href="/Area/areaIndex" role="button" class="btn btn-primary">Voltar</a>

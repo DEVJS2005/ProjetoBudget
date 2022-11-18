@@ -3,37 +3,49 @@
 @{
     ViewBag.Title = "Orçamento";
 }
-
+<br />
+<div class="text-center">
+    <h1 class="titulo_orc1">Orçamento</h1>
+</div>
+<br />
+<hr />
+<div class="text-justify">
 <form name="CadastroOrcamento" method="post" action="/Orcamento/cadastro">
     <div class="form-group">
-        <label for="exampleInputEmail1"> Nome Orçamento </label>
+        <label for="exampleInputEmail1" class="titulo_orc"> Nome Orçamento </label>
+        <br />
         <input type="text" name="nomeOrcamento" class="form-check-input" id="exampleCheck1" />
     </div>
 
     <div class="form-group">
-        <label for="exampleInputEmail1"> Setor: </label>
-        <select name="setor">
+        <label for="exampleInputEmail1" class="titulo_orc"> Setor: </label>
+        <br />
+        <select name="setor" class="input_setor">
             @foreach(var item in Model)
             {
                 <option value="@item.idCentroGasto">
                     @item.nomeCentroGasto
                 </option>
             }
-
         </select>
     </div>
     <hr />
     <div>
-        <label> Valor de alocação </label>
+        <label class="titulo_orc"> Valor de alocação </label>
+        <br />
         <input type="text" name="valorAplicado" class="form-check-input" id="exampleCheck1" /><br />
 
         <br />
-        <label> Data inicio: </label>
+        <label class="titulo_orc"> Data inicio: </label>
+        <br />
         <input type="date" name="dataInicio" class="form-check-input" id="exampleCheck1" />
-
-        <label> Data fim: </label>
+        <br />
+        <label class="titulo_orc"> Data fim: </label>
+        <br />
         <input type="date" name="dataFim" class="form-check-input" id="exampleCheck1" />
     </div>
-
+    <br />
+    <br />
     <button type="submit" class="btn btn-primary"> Registrar </button>
 </form>
+</div>
