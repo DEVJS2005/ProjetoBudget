@@ -2,10 +2,10 @@
 @{
     ViewBag.Title = "Listagem Orçamentos";
 }
-<h2> Itens Orçamentarios cadastrados: </h2>
+<h2 class="tituloPcad"> Itens Orçamentarios cadastrados: </h2>
 <table class="table">
     <thead>
-        <tr>
+        <tr class="tablecad">
             <th scope="col"> Descrição item</th>
             <th scope="col"> Tipo Gasto  </th>
             <th scope="col"> Tipo Item:  </th>
@@ -20,10 +20,9 @@
                 <td>@item.tipoGasto</td>
                 <td>@item.TipoItem.nomeTipoItem</td>
                 <td>@item.valorUnitario</td>
-
                 
-            }
 
+            }
         </tr>
     </tbody>
 </table>

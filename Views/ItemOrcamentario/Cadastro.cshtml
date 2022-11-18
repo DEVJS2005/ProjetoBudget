@@ -3,9 +3,13 @@
 @{
     ViewBag.Title = "Item Orçamentario";
 }
-
+<div class="text-center">
+<h1 class="tituloPcad">Cadastro</h1>
+    <br />
+    <br />
 <form name="CadastroItemOrcamentario" action="/ItensOrcamentarios/Cadastro" method="post">
-    <label> Descrição do Item:  </label>
+    <label class="titulo_cad"> Descrição do Item:  </label>
+    <br />
     <input type="text" name="DescricaoItem" class="form-check-input" id="exampleCheck1" /><br />
     <br />
 
@@ -30,13 +34,13 @@
     <br />
     
     <select name="TipoItem" class="categ_item">
-        @foreach (var item in Model)
+       @foreach (var item in Model)
         {
-            <option>
-            </option>
-            <option value="@item.idTipoItem">
-                @item.nomeTipoItem
-            </option>
+           <option>
+           </option>
+           <option value="@item.idTipoItem">
+               @item.nomeTipoItem
+           </option>
         }
     </select>
 
@@ -46,12 +50,15 @@
         <label> Valor Unitario: </label>
         <input type="text" name="valorUnitario" class="form-check-input" id="exampleCheck1" />
     </div>
-
+    <br />
+    <br />
 
 
     <button type="submit" class="btn btn-primary"> Registrar </button>
 
 </form>
+</div>
+
 <script>
     function mudarEstado(id, idNat) {
         if (idNat == 1) 

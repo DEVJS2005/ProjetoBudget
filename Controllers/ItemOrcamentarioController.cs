@@ -16,7 +16,7 @@ namespace Projeto_Budget.Controllers
         [HttpGet]
         public ActionResult Cadastro()
         {
-            return View(db.TipoItem.ToList());
+           return View(db.TipoItem.ToList());
         }
 
         [HttpPost]

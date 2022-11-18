@@ -48,7 +48,11 @@ textarea {
     padding-left:162px;
     margin:5px;
 }
-#tituloPcad {
+.tituloPcad {
     color: #D2D4D6;
     font-size:44px;
+}
+.tablecad {
+    color:white;
+
 }
