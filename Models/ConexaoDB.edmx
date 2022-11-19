@@ -38,9 +38,9 @@
             <PropertyRef Name="idOrcaItem" />
           </Key>
           <Property Name="idOrcaItem" Type="int" Nullable="false" />
-          <Property Name="quantCompra" Type="int" Nullable="false" />
-          <Property Name="observacao" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="prioridade" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="quantItem" Type="int" />
+          <Property Name="observacao" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="prioridade" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="idorcamento" Type="int" Nullable="false" />
           <Property Name="idItemorcamentario" Type="int" Nullable="false" />
         </EntityType>
@@ -193,9 +193,9 @@
             <PropertyRef Name="idOrcaItem" />
           </Key>
           <Property Name="idOrcaItem" Type="Int32" Nullable="false" />
-          <Property Name="quantCompra" Type="Int32" Nullable="false" />
-          <Property Name="observacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="prioridade" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quantItem" Type="Int32" />
+          <Property Name="observacao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prioridade" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="idorcamento" Type="Int32" Nullable="false" />
           <Property Name="idItemorcamentario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="itensOrcamentarios" Relationship="Self.FK_OrcaItem_itensOrcamentarios" FromRole="OrcaItem" ToRole="itensOrcamentarios" />
@@ -351,7 +351,7 @@
             <EntityTypeMapping TypeName="BDBudgetModel.OrcaItem">
               <MappingFragment StoreEntitySet="OrcaItem">
                 <ScalarProperty Name="idOrcaItem" ColumnName="idOrcaItem" />
-                <ScalarProperty Name="quantCompra" ColumnName="quantCompra" />
+                <ScalarProperty Name="quantItem" ColumnName="quantItem" />
                 <ScalarProperty Name="observacao" ColumnName="observacao" />
                 <ScalarProperty Name="prioridade" ColumnName="prioridade" />
                 <ScalarProperty Name="idorcamento" ColumnName="idorcamento" />

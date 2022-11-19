@@ -15,7 +15,7 @@ namespace ProjetoBudget.Models
     public partial class OrcaItem
     {
         public int idOrcaItem { get; set; }
-        public int quantCompra { get; set; }
+        public Nullable<int> quantItem { get; set; }
         public string observacao { get; set; }
         public string prioridade { get; set; }
         public int idorcamento { get; set; }

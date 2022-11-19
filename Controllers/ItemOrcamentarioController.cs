@@ -26,7 +26,6 @@ namespace Projeto_Budget.Controllers
             
             itensOrcamentarios Io = new itensOrcamentarios();
             Io.descricaoItem = descricaoItem;       
-            Io.valorUnitario = valorUnitario;
             Io.tipoGasto = tipoGasto;
             Io.idTipoItem = TipoItem;
             Io.TipoItem = tpI;

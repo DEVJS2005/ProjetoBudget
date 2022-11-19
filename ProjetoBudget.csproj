@@ -385,6 +385,7 @@
     <Content Include="Views\OrcaItem\Cadastro.cshtml" />
     <Content Include="Views\ItemOrcamentario\Index.cshtml" />
     <Content Include="Views\ItemOrcamentario\Cadastro.cshtml" />
+    <Content Include="Views\OrcaItem\ListaItens.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

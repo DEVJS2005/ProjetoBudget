@@ -32,7 +32,7 @@ namespace Projeto_Budget.Controllers
             db.Orcamento.Add(orcamento);
             db.SaveChanges();
 
-            Session["orcamento"] = orcamento;
+            Session.Add("orcamento", orcamento);
 
             return RedirectToAction("Cadastro","Orcaitem");
         }
