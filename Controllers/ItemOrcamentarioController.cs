@@ -22,7 +22,7 @@ namespace Projeto_Budget.Controllers
         [HttpPost]
         public ActionResult Cadastro(string descricaoItem, string tipoGasto, int TipoItem, float? valorUnitario)
         {
-            TipoItem tpI = db.TipoItem.Find(TipoItem);
+            TipoItem tpI = db.TipoItem.ToList().Find(x => x.idTipoItem == TipoItem);
             
             itensOrcamentarios Io = new itensOrcamentarios();
             Io.descricaoItem = descricaoItem;       

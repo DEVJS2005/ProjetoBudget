@@ -1,4 +1,4 @@
-﻿@Model ProjetoBudget.Models.itemOrcamentario
+﻿@Model ProjetoBudget.Models.itensOrcamentarios
 @{
     ViewBag.Title = "Listagem Orçamentos";
 }
@@ -9,21 +9,23 @@
             <th scope="col"> Descrição item</th>
             <th scope="col"> Tipo Gasto  </th>
             <th scope="col"> Tipo Item:  </th>
-            <th scope="col"> Valor Unitario </th>
+            <th scope="col"> Valor Unitario: </th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            @foreach (var item in Model)
-            {
+        @foreach (var item in Model)
+        {
+            <tr>
                 <td>@item.descricaoItem</td>
                 <td>@item.tipoGasto</td>
                 <td>@item.TipoItem.nomeTipoItem</td>
                 <td>@item.valorUnitario</td>
-                
-
-            }
-        </tr>
-    </tbody>
+                <td> <a href="/OrcaItem/AddItem?idI=@item.id" class="btn btn-success"> Adicionar ao orçamento </a> </td>
+                <td> <a  class="btn btn-warning"> Editar </a> </td>
+                <td> <a  class="btn btn-danger"> Excluir </a>
+            </tr>  
+         }
+           
+        </tbody>
 </table>
 

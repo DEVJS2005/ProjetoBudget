@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="idCentroGasto" />
           </Key>
-          <Property Name="idCentroGasto" Type="int" Nullable="false" />
+          <Property Name="idCentroGasto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nomeCentroGasto" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="idFuncionario" Type="int" Nullable="false" />
         </EntityType>
@@ -17,7 +17,7 @@
           <Key>
             <PropertyRef Name="idFuncionario" />
           </Key>
-          <Property Name="idFuncionario" Type="int" Nullable="false" />
+          <Property Name="idFuncionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nomeFuncionario" Type="varchar" MaxLength="35" Nullable="false" />
           <Property Name="matricula" Type="char" MaxLength="6" Nullable="false" />
           <Property Name="senha" Type="char" MaxLength="8" Nullable="false" />
@@ -27,28 +27,28 @@
           <Key>
             <PropertyRef Name="idItemOrcamentario" />
           </Key>
-          <Property Name="idItemOrcamentario" Type="int" Nullable="false" />
+          <Property Name="idItemOrcamentario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descricaoItem" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="tipoGasto" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="tipoGasto" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="valorUnitario" Type="float" />
           <Property Name="idTipoItem" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OrcaItem">
           <Key>
-            <PropertyRef Name="idOrcaItem" />
+            <PropertyRef Name="idorcamento" />
+            <PropertyRef Name="idItemorcamentario" />
           </Key>
-          <Property Name="idOrcaItem" Type="int" Nullable="false" />
-          <Property Name="quantItem" Type="int" />
-          <Property Name="observacao" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="prioridade" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="idorcamento" Type="int" Nullable="false" />
           <Property Name="idItemorcamentario" Type="int" Nullable="false" />
+          <Property Name="quantItem" Type="int" />
+          <Property Name="observacao" Type="varchar" MaxLength="500" />
+          <Property Name="prioridade" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="Orcamento">
           <Key>
             <PropertyRef Name="idOrcamento" />
           </Key>
-          <Property Name="idOrcamento" Type="int" Nullable="false" />
+          <Property Name="idOrcamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nomeOrcamento" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="dataInicio" Type="date" Nullable="false" />
           <Property Name="dataFim" Type="date" Nullable="false" />
@@ -159,7 +159,7 @@
           <Key>
             <PropertyRef Name="idCentroGasto" />
           </Key>
-          <Property Name="idCentroGasto" Type="Int32" Nullable="false" />
+          <Property Name="idCentroGasto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomeCentroGasto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idFuncionario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Funcionario" Relationship="Self.FK_CentroGasto_Funcionario" FromRole="CentroGasto" ToRole="Funcionario" />
@@ -169,7 +169,7 @@
           <Key>
             <PropertyRef Name="idFuncionario" />
           </Key>
-          <Property Name="idFuncionario" Type="Int32" Nullable="false" />
+          <Property Name="idFuncionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomeFuncionario" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="matricula" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="senha" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
@@ -180,9 +180,9 @@
           <Key>
             <PropertyRef Name="idItemOrcamentario" />
           </Key>
-          <Property Name="idItemOrcamentario" Type="Int32" Nullable="false" />
+          <Property Name="idItemOrcamentario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descricaoItem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="tipoGasto" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipoGasto" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="valorUnitario" Type="Double" />
           <Property Name="idTipoItem" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TipoItem" Relationship="Self.FK_itensOrcamentarios_TipoItem" FromRole="itensOrcamentarios" ToRole="TipoItem" />
@@ -190,14 +190,14 @@
         </EntityType>
         <EntityType Name="OrcaItem">
           <Key>
-            <PropertyRef Name="idOrcaItem" />
+            <PropertyRef Name="idorcamento" />
+            <PropertyRef Name="idItemorcamentario" />
           </Key>
-          <Property Name="idOrcaItem" Type="Int32" Nullable="false" />
-          <Property Name="quantItem" Type="Int32" />
-          <Property Name="observacao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="prioridade" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="idorcamento" Type="Int32" Nullable="false" />
           <Property Name="idItemorcamentario" Type="Int32" Nullable="false" />
+          <Property Name="quantItem" Type="Int32" />
+          <Property Name="observacao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="prioridade" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="itensOrcamentarios" Relationship="Self.FK_OrcaItem_itensOrcamentarios" FromRole="OrcaItem" ToRole="itensOrcamentarios" />
           <NavigationProperty Name="Orcamento" Relationship="Self.FK_OrcaItem_Orcamento" FromRole="OrcaItem" ToRole="Orcamento" />
         </EntityType>
@@ -205,7 +205,7 @@
           <Key>
             <PropertyRef Name="idOrcamento" />
           </Key>
-          <Property Name="idOrcamento" Type="Int32" Nullable="false" />
+          <Property Name="idOrcamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomeOrcamento" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="dataInicio" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="dataFim" Type="DateTime" Nullable="false" Precision="0" />
@@ -350,12 +350,11 @@
           <EntitySetMapping Name="OrcaItem">
             <EntityTypeMapping TypeName="BDBudgetModel.OrcaItem">
               <MappingFragment StoreEntitySet="OrcaItem">
-                <ScalarProperty Name="idOrcaItem" ColumnName="idOrcaItem" />
+                <ScalarProperty Name="idorcamento" ColumnName="idorcamento" />
+                <ScalarProperty Name="idItemorcamentario" ColumnName="idItemorcamentario" />
                 <ScalarProperty Name="quantItem" ColumnName="quantItem" />
                 <ScalarProperty Name="observacao" ColumnName="observacao" />
                 <ScalarProperty Name="prioridade" ColumnName="prioridade" />
-                <ScalarProperty Name="idorcamento" ColumnName="idorcamento" />
-                <ScalarProperty Name="idItemorcamentario" ColumnName="idItemorcamentario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

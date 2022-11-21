@@ -11,9 +11,43 @@ namespace ProjetoBudget.Controllers
     {
         BDBudgetEntities bd = new BDBudgetEntities();
         // GET: OrcaItem
-        public ActionResult Cadastro()
+        public ActionResult AddItem(int idI)
         {
-           return View(bd.itensOrcamentarios.ToList());
+            bool objProduto = false;
+
+            OrcaItem orcaItem = Session["carrinho"] != null ? (OrcaItem)Session["carrinho"] : new OrcaItem();
+
+            itensOrcamentarios item = bd.itensOrcamentarios.Find(idI);
+
+            if (item != null)
+            {
+                OrcaItem pedOI = new OrcaItem();
+                pedOI.itensOrcamentarios = item;
+                pedOI.quantItem = 1;
+
+                foreach (var obj in item.OrcaItem)
+                {
+                    if (obj.itensOrcamentarios.idItemOrcamentario == item.idItemOrcamentario)
+                    {
+                        obj.quantItem += 1;
+                        objProduto = true;
+                        break;
+                    }
+
+                }
+
+                if (objProduto == false)
+                {
+                    item.OrcaItem.Add(pedOI);
+                }
+
+
+
+                Session["carrinho"] = orcaItem;
+
+            }
+
+            return RedirectToAction("ListaItens");
         }
     }
 }

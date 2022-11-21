@@ -14,12 +14,11 @@ namespace ProjetoBudget.Models
     
     public partial class OrcaItem
     {
-        public int idOrcaItem { get; set; }
+        public int idorcamento { get; set; }
+        public int idItemorcamentario { get; set; }
         public Nullable<int> quantItem { get; set; }
         public string observacao { get; set; }
         public string prioridade { get; set; }
-        public int idorcamento { get; set; }
-        public int idItemorcamentario { get; set; }
     
         public virtual itensOrcamentarios itensOrcamentarios { get; set; }
         public virtual Orcamento Orcamento { get; set; }
