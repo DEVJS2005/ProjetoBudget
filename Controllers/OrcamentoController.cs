@@ -17,7 +17,7 @@ namespace Projeto_Budget.Controllers
         }
 
         [HttpPost]
-        public ActionResult cadastro(string nomeOrcamento,int idCentroGasto,float valorAlocacao,DateTime dataInicio,DateTime dataFim)
+        public ActionResult cadastro(string nomeOrcamento,int idCentroGasto, float valorAlocacao,DateTime dataInicio,DateTime dataFim)
         {
             Orcamento orcamento = new Orcamento();
 
@@ -31,14 +31,20 @@ namespace Projeto_Budget.Controllers
             orcamento.CentroGasto = cg;
             db.Orcamento.Add(orcamento);
             db.SaveChanges();
+            Session["orcamento"] = orcamento.idOrcamento;
 
-            Session.Add("orcamento", orcamento);
-
-            return RedirectToAction("Cadastro","Orcaitem");
+            return RedirectToAction("Index","ItemOrcamentario");
         }
+
         public ActionResult Lista()
         {
-            return View();
+            return View(db.Orcamento.ToList());
+        }
+
+        public ActionResult Acessar(int id)
+        {
+            Session["idOrca"] = id;
+            return RedirectToAction("ListaItens","OrcaItem");
         }
     }
 }

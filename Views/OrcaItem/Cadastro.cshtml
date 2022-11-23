@@ -4,44 +4,44 @@
     ViewBag.Title = "Itens selecionados para o orçamento";
 }
 <div class="text-center">
-    <form name="CadastroOrcamento" method="post" action="/OrcaItem/cadastro">
+    <form name="CadastroItemOrca" method="post" action="/OrcaItem/cadastro">
         <div class="form-group">
-            
-            <br/>
+
+            <br />
             <label for="exampleInputEmail1" class="titulo_item"> Item: </label>
             <br />
-            
+
             <select name="itens" class="itens_orc">
                 @foreach (var item in Model)
-                 {
+                {
                     <option value="@item.idItemOrcamentario" onclick="ativarQuantItem('divQuant',@item.tipoGasto)">
                         @item.descricaoItem
                     </option>
-                 }
+                }
             </select>
 
         </div>
-        
+
         <div class="form-check" id="divQuant" style="display:none">
             <label> Quantidade Item </label>
-            <input class="form-check-input" type="number" name="quantItem" id="flexRadioDefault2" >
+            <input class="form-check-input" type="number" name="quantItem" id="flexRadioDefault2">
         </div>
 
         <div>
             <label class="titulo_item"> Valor alocado: </label><br />
-            
+
             <input type="text" name="prioridade" class="form-check-input" id="exampleCheck1" /><br /> <br />
             <label class="titulo_item">  Prioridade: </label>
             <br />
-            
+
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault1" value="A" onclick="alterarVisibilidade('divObs','Alta')"> Alta
             </div>
-            
+
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault2" value="M" onclick="alterarVisibilidade('divObs','Média')"> Média
             </div>
-            
+
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault2" value="B" onclick="alterarVisibilidade('divObs','Baixa')"> Baixa
             </div>
@@ -49,35 +49,12 @@
         </div>
 
         <div class="form-check" id="divObs" style="display:none">
-            
+
             <label> Observação: </label>
             <input class="form-check-input" type="text" name="flexRadioDefault" id="flexRadioDefault2" maxlength="500">
-        
+
         </div>
-        <br/><br/>
+        <br /><br />
         <button type="submit" class="btn btn-primary"> Listar </button>
     </form>
 </div>
-
-@section Scripts {
-    <script>
-
-        function alterarVisibilidade(id, campoClick)
-        {
-            var display = document.getElementById(id).style.display;
-            if (campoClick == "Alta")
-            {
-                document.getElementById(id).style.display = 'block';
-            } else if (campoClick == "Média")
-            {
-                document.getElementById(id).style.display = 'none';
-            } else{document.getElementById(id).style.display = 'none';}
-        }
-        function ativarQuantItem(id,tipoGasto) {
-            var display = document.getElementById(id).style.display;
-            if (tipoGasto == "investimento") {
-                document.getElementById(id).style.display = 'block';
-            }
-        }
-    </script>
-}

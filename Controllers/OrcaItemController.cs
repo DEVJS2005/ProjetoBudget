@@ -11,19 +11,37 @@ namespace ProjetoBudget.Controllers
     {
         BDBudgetEntities bd = new BDBudgetEntities();
         // GET: OrcaItem
-        public ActionResult AddItem(int idI)
+        
+        public ActionResult AddItem(OrcaItem orcItem)
         {
             bool objProduto = false;
+            int? idOrcamento;
 
-            OrcaItem orcaItem = Session["carrinho"] != null ? (OrcaItem)Session["carrinho"] : new OrcaItem();
+            itensOrcamentarios itensO = Session["carrinho"] != null ? (itensOrcamentarios)Session["carrinho"] : new itensOrcamentarios();
+            if (Session["orcamento"] == null)
+            {
+                idOrcamento = (int)Session["idOrca"];
+            }
+            else
+            {
+                idOrcamento = (int)Session["orcamento"];
+            }
 
-            itensOrcamentarios item = bd.itensOrcamentarios.Find(idI);
+            Orcamento orcamento = bd.Orcamento.Find(idOrcamento);
+
+
+            itensOrcamentarios item = bd.itensOrcamentarios.Find(orcItem.idItemorcamentario);
 
             if (item != null)
             {
                 OrcaItem pedOI = new OrcaItem();
                 pedOI.itensOrcamentarios = item;
                 pedOI.quantItem = 1;
+                pedOI.idorcamento = orcamento.idOrcamento;
+                pedOI.Orcamento = orcamento;
+                pedOI.itensOrcamentarios = item;
+                pedOI.observacao = orcItem.observacao;
+                pedOI.prioridade = orcItem.prioridade;
 
                 foreach (var obj in item.OrcaItem)
                 {
@@ -38,16 +56,60 @@ namespace ProjetoBudget.Controllers
 
                 if (objProduto == false)
                 {
-                    item.OrcaItem.Add(pedOI);
+                    itensO.OrcaItem.Add(pedOI);
                 }
 
 
 
-                Session["carrinho"] = orcaItem;
+                Session["carrinho"] = itensO;
 
             }
 
-            return RedirectToAction("ListaItens");
+            return RedirectToAction("Listaitens");
+        }
+
+        [HttpGet]
+        public ActionResult ListaItens() 
+        {
+            itensOrcamentarios itensO = Session["carrinho"] != null ? (itensOrcamentarios)Session["carrinho"] : new itensOrcamentarios();
+            return View(itensO);
+
+        }
+        [HttpGet]
+        public ActionResult alterPrioridade(int idI)
+        {
+            int idOrcamento;
+            if (Session["orcamento"] == null)
+            {
+               idOrcamento = (int)Session["idOrca"];
+            }
+            else
+            {
+               idOrcamento = (int)Session["orcamento"];
+            }
+            OrcaItem orcItem = new OrcaItem();
+            orcItem.idItemorcamentario = idI;
+            orcItem.idorcamento = idOrcamento;
+            return View(orcItem);
+        }
+        [HttpPost]
+        public ActionResult alterPrioridade(string prioridade, string observacao,int idItemOrc)
+        {
+            int idOrcamento;
+            if (Session["orcamento"] == null)
+            {
+                idOrcamento = (int)Session["idOrca"];
+            }
+            else
+            {
+                idOrcamento = (int)Session["orcamento"];
+            }
+            OrcaItem orcItem = new OrcaItem();
+            orcItem.prioridade = prioridade;
+            orcItem.observacao = observacao;
+            orcItem.idorcamento = idOrcamento;
+            orcItem.idItemorcamentario = idItemOrc;
+            return RedirectToAction("AddItem","OrcaItem",orcItem);
         }
     }
 }

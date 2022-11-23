@@ -1,37 +1,47 @@
-﻿@Model ProjetoBudget.Models.Orcamento
+﻿@Model ProjetoBudget.Models.itensOrcamentarios
 @{
-    ViewBag.Title = "Listagem Orcamentos";
+    ViewBag.Title = "Listagem de itens";
 }
 
 <br />
-<h2 class="titulo_orc1"> Listagem Orçamentos </h2>
+<h2 class="titulo_orc1"> Listagem intens do orçamento </h2>
 <br />
 <br />
 <table class="table">
     <thead>
         <tr class="list">
-            <th scope="col"> Nome orçamento</th>
-            <th scope="col"> Valor Aplicado  </th>
-            <th scope="col"> Data de inicio </th>
-            <th scope="col"> Data de fim </th>
+            <th scope="col"> Nome orçamento: </th>
+            <th scope="col"> Nome Item: </th>
+            <th scope="col"> Quantidade de itens: </th>
+            <th scope="col"> Prioridade: </th>
+            <th scope="col"> Observação: </th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            @foreach (var item in Model)
+            @foreach (var item in Model.OrcaItem)
             {
-                <th scope="row">@item.nomeOrcamento</th>
-                <td>@item.valorAplicado</td>
-                <td>@item.dataInicio</td>
-                <td>@item.dataFim</td>
+                <th scope="row">@item.Orcamento.nomeOrcamento</th>
+                <td>@item.itensOrcamentarios.descricaoItem</td>
+                <td>@item.quantItem</td>
+                if (item.prioridade == "A")
+                {
+                    <td>Alta</td>
+                }
+                else if (item.prioridade == "M")
+                {
+                    <td> Média </td>
+                }
+                else {<td> Baixa </td> }
+                <td>@item.observacao</td>
                 <td>
-                    <a href="/Area/areaEditar?id=@Model.idArea" role="button" class="btn btn-primary">Editar</a>
-                    <a href="/Area/areaExcluir" role="button" class="btn btn-danger">Excluir</a>
+                    <a href="/OrcaItem/alterPrioridade?idItemOrca=@item.idItemorcamentario" role="button" class="btn btn-primary"> Modificar Prioridade </a>
+                    <a href="" role="button" class="btn btn-danger"> Remover </a>
                 </td>
             }
 
-            </tr>
+        </tr>
     </tbody>
 </table>
 <br />
-<a href="/Area/areaIndex" role="button" class="btn btn-primary">Voltar</a>
+<a href="/itemOrcamentario/index" role="button" class="btn btn-primary">Lista Itens </a>
