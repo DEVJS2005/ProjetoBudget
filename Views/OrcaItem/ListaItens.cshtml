@@ -4,24 +4,26 @@
 }
 
 <br />
-<h2 class="titulo_orc1"> Listagem intens do orçamento </h2>
+<h2 class="titulo_orc1"> Listagem: itens do orçamento </h2>
 <br />
 <br />
 <table class="table">
     <thead>
         <tr class="list">
-            <th scope="col"> Nome orçamento: </th>
             <th scope="col"> Nome Item: </th>
             <th scope="col"> Quantidade de itens: </th>
             <th scope="col"> Prioridade: </th>
-            <th scope="col"> Observação: </th>
+            @if (Model.OrcaItem.observacao != null)
+             {
+                <th scope="col"> Observação: </th>
+             }
+
         </tr>
     </thead>
     <tbody>
         <tr>
             @foreach (var item in Model.OrcaItem)
-            {
-                <th scope="row">@item.Orcamento.nomeOrcamento</th>
+             {
                 <td>@item.itensOrcamentarios.descricaoItem</td>
                 <td>@item.quantItem</td>
                 if (item.prioridade == "A")
@@ -32,16 +34,28 @@
                 {
                     <td> Média </td>
                 }
-                else {<td> Baixa </td> }
+                else
+                {
+                    <td> Baixa </td>
+                }
+
                 <td>@item.observacao</td>
+                if(item.itensOrcamentarios.tipoGasto == "C")
+                <td> <input /> </td>
                 <td>
                     <a href="/OrcaItem/alterPrioridade?idItemOrca=@item.idItemorcamentario" role="button" class="btn btn-primary"> Modificar Prioridade </a>
                     <a href="" role="button" class="btn btn-danger"> Remover </a>
                 </td>
-            }
+             }
 
         </tr>
     </tbody>
 </table>
 <br />
 <a href="/itemOrcamentario/index" role="button" class="btn btn-primary">Lista Itens </a>
+
+@section Scripts{
+    <script>
+        function () {
+    </script>
+}
