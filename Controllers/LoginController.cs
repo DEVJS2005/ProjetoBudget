@@ -9,9 +9,10 @@ namespace ProjetoBudget.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        public ActionResult Index()
+        public ActionResult TelaLogin()
         {
             return View();
         }
+        
     }
 }
