@@ -24,6 +24,8 @@ namespace ProjetoBudget.Models
         public string nomeOrcamento { get; set; }
         public System.DateTime dataInicio { get; set; }
         public System.DateTime dataFim { get; set; }
+        public string situacao { get; set; }
+        public string observacao { get; set; }
         public double valorAplicado { get; set; }
         public int idcentrogasto { get; set; }
     

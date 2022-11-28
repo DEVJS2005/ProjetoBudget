@@ -4,7 +4,7 @@
 }
 
 <br />
-<h2 class="titulo_orc1"> Listagem Orçamentos: </h2>
+<h2 class="titulo_orc1"> Listagem de Orçamentos: </h2>
 <br />
 <br />
 <table class="table">
@@ -14,6 +14,8 @@
             <th scope="col"> Valor Aplicado  </th>
             <th scope="col"> Data de inicio </th>
             <th scope="col"> Data de fim </th>
+            <th scope="col"> Aprovação </th>
+            <th scope="col">  </th>
         </tr>
     </thead>
     <tbody>
@@ -25,12 +27,21 @@
                 <td>@item.dataInicio</td>
                 <td>@item.dataFim</td>
                 <td>
+                    <div>
+                        <button type="button" class="btn btn-success">Aprovado</button>
+                        <br /><button type="button" class="btn btn-warning">Aprovado Parcialmente</button>
+                        <br /><button type="button" class="btn btn-danger">Reprovado</button>
+                    </div>
+                </td>
+                <td>
+                </td>
+                <td>
                     <a href="/Orcamento/acessar?id=@item.idOrcamento" role="button" class="btn btn-primary">Acessar</a>
                     <a href="" role="button" class="btn btn-danger">Excluir</a>
                 </td>
             }
 
-            </tr>
+        </tr>
     </tbody>
 </table>
 <br />

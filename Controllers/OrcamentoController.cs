@@ -36,7 +36,7 @@ namespace Projeto_Budget.Controllers
             return RedirectToAction("Index","ItemOrcamentario");
         }
 
-        public ActionResult Lista()
+        public ActionResult ListaGF()
         {
             return View(db.Orcamento.ToList());
         }

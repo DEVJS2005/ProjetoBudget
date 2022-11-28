@@ -287,6 +287,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemOrcamentarioController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrcaItemController.cs" />
     <Compile Include="Controllers\OrcamentoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -381,7 +382,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Orcamento\Cadastro.cshtml" />
-    <Content Include="Views\Orcamento\Lista.cshtml" />
+    <Content Include="Views\Orcamento\ListaGF.cshtml" />
     <Content Include="Views\OrcaItem\Cadastro.cshtml" />
     <Content Include="Views\ItemOrcamentario\Index.cshtml" />
     <Content Include="Views\ItemOrcamentario\Cadastro.cshtml" />
@@ -390,6 +391,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
