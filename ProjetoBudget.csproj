@@ -388,10 +388,10 @@
     <Content Include="Views\ItemOrcamentario\Cadastro.cshtml" />
     <Content Include="Views\OrcaItem\ListaItens.cshtml" />
     <Content Include="Views\OrcaItem\alterPrioridade.cshtml" />
+    <Content Include="Views\Login\TelaLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

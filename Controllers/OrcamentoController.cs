@@ -46,5 +46,16 @@ namespace Projeto_Budget.Controllers
             Session["idOrca"] = id;
             return RedirectToAction("ListaItens","OrcaItem");
         }
+
+        public ActionResult aprovado(int id)
+        {
+            Orcamento orca = db.Orcamento.Find(id);
+            orca.idOrcamento = id;
+            orca.situacao = "A";
+            db.Orcamento.Add(orca);
+            db.SaveChanges();
+
+            return RedirectToAction("ListaGF");
+        }
     }
 }

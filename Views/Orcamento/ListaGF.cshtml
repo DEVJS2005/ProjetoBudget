@@ -22,24 +22,28 @@
         <tr>
             @foreach (var item in Model)
             {
-                <th scope="row">@item.nomeOrcamento</th>
-                <td>@item.valorAplicado</td>
-                <td>@item.dataInicio</td>
-                <td>@item.dataFim</td>
-                <td>
-                    <div>
-                        <button type="button" class="btn btn-success">Aprovado</button>
-                        <br /><button type="button" class="btn btn-warning">Aprovado Parcialmente</button>
-                        <br /><button type="button" class="btn btn-danger">Reprovado</button>
-                    </div>
-                </td>
-                <td>
-                </td>
-                <td>
-                    <a href="/Orcamento/acessar?id=@item.idOrcamento" role="button" class="btn btn-primary">Acessar</a>
-                    <a href="" role="button" class="btn btn-danger">Excluir</a>
-                </td>
-            }
+                if (item.situacao == null)
+                {
+                    <th scope="row">@item.nomeOrcamento</th>
+                    <td>@item.valorAplicado</td>
+                    <td>@item.dataInicio</td>
+                    <td>@item.dataFim</td>
+                    <td>
+                        <div>
+                            <a href="/orcamento/aprovado?id=@item.idOrcamento" class="btn btn-success"> Aprovado </a>
+                            <br /><a href="" class="btn btn-warning"> Aprovado Parcialmente </a>
+                            <br /><a href="" class="btn btn-danger"> Reprovado </a>
+                        </div>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        <a href="/Orcamento/acessar?id=@item.idOrcamento" role="button" class="btn btn-primary">Acessar</a>
+                        <a href="" role="button" class="btn btn-danger">Excluir</a>
+                    </td>
+
+                }
+             }
 
         </tr>
     </tbody>
