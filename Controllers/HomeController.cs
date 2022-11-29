@@ -26,5 +26,13 @@ namespace Projeto_Budget.Controllers
 
             return View();
         }
+        public ActionResult TelaGerenteFinanceiro()
+        {
+            return View();
+        }
+        public ActionResult TelaGerenteSetor ()
+        {
+            return View();
+        }
     }
 }
