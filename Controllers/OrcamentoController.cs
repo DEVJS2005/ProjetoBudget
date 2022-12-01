@@ -9,11 +9,26 @@ namespace Projeto_Budget.Controllers
 {
     public class OrcamentoController : Controller
     {
+        public bool VerificarLogin()
+        {
+            if (Session["Login"] != null)
+            {
+                return true;
+            }
+            return false;
+        }
         BDBudgetEntities db = new BDBudgetEntities();
         // GET: Orcamento
         public ActionResult cadastro()
         {
-          return View(db.CentroGasto.ToList());
+            if (VerificarLogin())
+            {
+                return View(db.CentroGasto.ToList());
+            }
+            else{
+                return RedirectToAction("TelaLogin","Login");
+            }
+          
         }
 
         [HttpPost]
@@ -38,13 +53,31 @@ namespace Projeto_Budget.Controllers
 
         public ActionResult ListaGF()
         {
-            return View(db.Orcamento.ToList());
+            if (Session["LoginGF"] != null)
+            {
+                return View(db.Orcamento.ToList());
+            }
+            else
+            {
+                return RedirectToAction("TelaLogin", "Login");
+            }
         }
-
+        public ActionResult ListaGS()
+        {
+            if (Session["LoginGS"] != null)
+            {
+                Funcionario func = (Funcionario)Session["LoginGS"];
+                return View(db.Orcamento.ToList().Find(x => x.CentroGasto.idFuncionario == func.idFuncionario));
+            }
+            else
+            {
+                return RedirectToAction("TelaLogin", "Login");
+            }
+        }
         public ActionResult Acessar(int id)
         {
             Session["idOrca"] = id;
-            return RedirectToAction("ListaItens","OrcaItem");
+            return RedirectToAction("ListaItens", "ItemOrcamentario");
         }
 
         public ActionResult aprovado(int id)

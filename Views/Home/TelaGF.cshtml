@@ -1,9 +1,10 @@
-﻿@{
-    ViewBag.Title = "Gerente Setor";
+﻿@Model ProjetoBudget.Models.Funcionario
+@{
+    ViewBag.Title = "Gerente Financeiro";
 }
 
 <div class="text-justify">
-    <h2>Olá #gerente.financeiro</h2>
+    <h2>Olá @Model.nomeFuncionario</h2>
 </div>
 <br />
 <ul class="nav nav-tabs">

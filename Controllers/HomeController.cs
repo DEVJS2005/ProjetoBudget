@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoBudget.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,14 @@ namespace Projeto_Budget.Controllers
 {
     public class HomeController : Controller
     {
+        public bool VerificarLogin()
+        {
+            if (Session["LoginGF"] != null)
+            {
+                return true;
+            }else if (Session["LoginGS"] != null) { return true; }
+            return false;
+        }
         public ActionResult Index()
         {
             return View();
@@ -26,13 +35,30 @@ namespace Projeto_Budget.Controllers
 
             return View();
         }
-        public ActionResult TelaGerenteFinanceiro()
+        public ActionResult TelaGF()
         {
-            return View();
+            if (VerificarLogin())
+            {
+                return View((Funcionario)Session["LoginGF"]);
+            }
+            else
+            {
+                return RedirectToAction("TelaLogin", "Login");
+            }
+
         }
-        public ActionResult TelaGerenteSetor ()
+        public ActionResult TelaGS()
         {
-            return View();
+            
+            if (VerificarLogin())
+            {
+                return View((Funcionario)Session["LoginGS"]);
+            }
+            else
+            {
+                return RedirectToAction("TelaLogin", "Login");
+            }
         }
+
     }
 }

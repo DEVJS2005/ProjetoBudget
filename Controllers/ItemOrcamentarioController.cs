@@ -2,21 +2,50 @@
 using System.Linq;
 using System.Web.Mvc;
 
+
 namespace Projeto_Budget.Controllers
 {
     public class ItemOrcamentarioController : Controller
     {
+        public bool VerificarLogin()
+        {
+            if (Session["LoginGF"] != null)
+            {
+                return true;
+            }
+            else if (Session["LoginGS"] != null) { return true; }
+            return false;
+        }
         BDBudgetEntities db = new BDBudgetEntities();
         // GET: ItemOrcamentoController
-        public ActionResult Index() 
-        { 
-            return View(db.itensOrcamentarios.ToList());
+        
+        public ActionResult ListaItens() 
+        {
+            
+            if (VerificarLogin()) 
+            {
+               return View(db.itensOrcamentarios.ToList());
+            }
+            else
+            {
+                return RedirectToAction("TelaLogin","Login");
+            }
+
+            
         }
         
         [HttpGet]
         public ActionResult Cadastro()
         {
-           return View(db.TipoItem.ToList());
+            if (VerificarLogin())
+            {
+                return View(db.TipoItem.ToList());
+            }
+            else
+            {
+                return RedirectToAction("TelaLogin", "Login");
+            }
+            
         }
 
         [HttpPost]

@@ -17,7 +17,18 @@
         {
             <tr>
                 <td>@item.descricaoItem</td>
-                <td>@item.tipoGasto</td>
+                @switch (item.tipoGasto)
+                 {
+                    case "C":
+                        <td> Custo </td>
+                        break;
+                    case "I":
+                        <td> Investimento </td>
+                        break;
+                    case "D":
+                        <td> Despesa </td>
+                        break;
+                 }
                 <td>@item.TipoItem.nomeTipoItem</td>
                 <td>@item.valorUnitario </td>
                 <td> <a href="/OrcaItem/alterPrioridade?idI=@item.idItemOrcamentario" class="btn btn-success"> Adicionar ao orçamento </a> </td>

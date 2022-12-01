@@ -72,7 +72,11 @@ namespace ProjetoBudget.Controllers
         public ActionResult ListaItens() 
         {
             itensOrcamentarios itensO = Session["carrinho"] != null ? (itensOrcamentarios)Session["carrinho"] : new itensOrcamentarios();
-            return View(itensO);
+            if (itensO != null)
+            {
+                return View(itensO);
+            }
+            return RedirectToAction("ListaItens", "itemOrcamentario");
 
         }
         [HttpGet]

@@ -11,51 +11,49 @@
     <thead>
         <tr class="list">
             <th scope="col"> Nome Item: </th>
-            <th scope="col"> Quantidade de itens: </th>
             <th scope="col"> Prioridade: </th>
-            @if (Model.OrcaItem.observacao != null)
-             {
-                <th scope="col"> Observação: </th>
-             }
-
+            <th scope="col"> Observação: </th>
+            <th scope="col"> Valor aplicado  </th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            @foreach (var item in Model.OrcaItem)
-             {
+
+        @foreach (var item in Model.OrcaItem)
+        {
+            <tr>
                 <td>@item.itensOrcamentarios.descricaoItem</td>
-                <td>@item.quantItem</td>
-                if (item.prioridade == "A")
+
+                @if (item.prioridade == "A")
                 {
-                    <td>Alta</td>
+                   <td>Alta</td>
                 }
                 else if (item.prioridade == "M")
                 {
-                    <td> Média </td>
+                  <td> Média </td>
                 }
                 else
                 {
-                    <td> Baixa </td>
+                  <td> Baixa </td>
                 }
-
                 <td>@item.observacao</td>
-                if(item.itensOrcamentarios.tipoGasto == "C")
-                <td> <input /> </td>
+
+                @if (item.itensOrcamentarios.tipoGasto == "C" || item.itensOrcamentarios.tipoGasto == "D")
+                 {
+                   <td> <input type="text" name="vlrAplicado" class="form-check-input" id="exampleCheck1" /> </td>
+                 }
                 <td>
                     <a href="/OrcaItem/alterPrioridade?idItemOrca=@item.idItemorcamentario" role="button" class="btn btn-primary"> Modificar Prioridade </a>
                     <a href="" role="button" class="btn btn-danger"> Remover </a>
                 </td>
-             }
-
-        </tr>
-    </tbody>
+           </tr>
+         }
+        </tbody>
 </table>
 <br />
-<a href="/itemOrcamentario/index" role="button" class="btn btn-primary">Lista Itens </a>
+<a href="/itemOrcamentario/ListaItens" role="button" class="btn btn-primary">Lista Itens </a>
 
 @section Scripts{
     <script>
-        function () {
+
     </script>
 }

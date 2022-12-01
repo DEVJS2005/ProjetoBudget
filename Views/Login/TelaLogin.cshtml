@@ -1,26 +1,28 @@
 ﻿@{
     ViewBag.Title = "TelaLogin";
 }
-<div class="text-center">
+<form name="LoginForm" action="/Login/Login" method="post" >
+    <div class="text-center">
+        <h2 class="titulo_orc1">Login</h2>
+        
+        <br />
 
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="titulo_orc"> Matricula </label>
+            <br />
+            <input type="text" name="matricula" class="form-check-input" id="exampleCheck1" />
+        </div>
 
-<h2 class="titulo_orc1">Login</h2>
+        <br />
 
-<br />
-
-<div class="form-group">
-    <label for="exampleInputEmail1" class="titulo_orc"> Matricula </label>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="titulo_orc"> Senha </label>
+            <br />
+            <input type="password" name="senha" class="form-check-input" id="exampleCheck1" />
+        </div>
+        <button type="submit" id="button" class="btn btn-primary"> Acessar </button>
+    </div>
     <br />
-    <input type="text" name="nomeOrcamento" class="form-check-input" id="exampleCheck1" />
-</div>
-<br />
-<div class="form-group">
-    <label for="exampleInputEmail1" class="titulo_orc"> Senha </label>
     <br />
-    <input type="text" name="nomeOrcamento" class="form-check-input" id="exampleCheck1" />
-</div>
-<button type="submit" id="button" class="btn btn-primary"> Acessar </button>
-</div>
-<br />
-<br />
-<br />
+    <br />
+</form>

@@ -1,0 +1,43 @@
+﻿@Model ProjetoBudget.Models.Orcamento
+@{
+    ViewBag.Title = "Listagem Orcamentos";
+}
+
+<br />
+<h2 class="titulo_orc1"> Listagem de Orçamentos: </h2>
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr class="list">
+            <th scope="col"> Nome orçamento</th>
+            <th scope="col"> Valor Aplicado  </th>
+            <th scope="col"> Data de inicio </th>
+            <th scope="col"> Data de fim </th>
+            <th scope="col"> Aprovação </th>
+            <th scope="col">  </th>
+        </tr>
+    </thead>
+    <tbody>
+          @if (Model.situacao == null)
+           {  <tr>
+                   <th scope="row">@Model.nomeOrcamento</th>
+                   <td>@Model.valorAplicado</td>
+                   <td>@Model.dataInicio</td>
+                   <td>@Model.dataFim</td>
+                   <td>
+
+                   </td>
+                   <td>
+                      <a href="/Orcamento/acessar?id=@Model.idOrcamento" role="button" class="btn btn-primary">Acessar</a>
+                      <a href="" role="button" class="btn btn-danger">Excluir</a>
+                   </td>
+              </tr>
+              
+           }
+
+       
+    </tbody>
+</table>
+<br />
+<a href="" role="button" class="btn btn-primary"> Voltar</a>
