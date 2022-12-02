@@ -11,7 +11,7 @@ namespace ProjetoBudget.Controllers
     {
         BDBudgetEntities bd = new BDBudgetEntities();
         // GET: OrcaItem
-        
+
         public ActionResult AddItem(OrcaItem orcItem)
         {
             bool objProduto = false;
@@ -69,7 +69,7 @@ namespace ProjetoBudget.Controllers
         }
 
         [HttpGet]
-        public ActionResult ListaItens() 
+        public ActionResult ListaItens()
         {
             itensOrcamentarios itensO = Session["carrinho"] != null ? (itensOrcamentarios)Session["carrinho"] : new itensOrcamentarios();
             if (itensO != null)
@@ -85,11 +85,11 @@ namespace ProjetoBudget.Controllers
             int idOrcamento;
             if (Session["orcamento"] == null)
             {
-               idOrcamento = (int)Session["idOrca"];
+                idOrcamento = (int)Session["idOrca"];
             }
             else
             {
-               idOrcamento = (int)Session["orcamento"];
+                idOrcamento = (int)Session["orcamento"];
             }
             OrcaItem orcItem = new OrcaItem();
             orcItem.idItemorcamentario = idI;
@@ -97,7 +97,7 @@ namespace ProjetoBudget.Controllers
             return View(orcItem);
         }
         [HttpPost]
-        public ActionResult alterPrioridade(string prioridade, string observacao,int idItemOrc)
+        public ActionResult alterPrioridade(string prioridade, string observacao, int idItemOrc)
         {
             int idOrcamento;
             if (Session["orcamento"] == null)
@@ -113,7 +113,7 @@ namespace ProjetoBudget.Controllers
             orcItem.observacao = observacao;
             orcItem.idorcamento = idOrcamento;
             orcItem.idItemorcamentario = idItemOrc;
-            return RedirectToAction("AddItem","OrcaItem",orcItem);
+            return RedirectToAction("AddItem", "OrcaItem", orcItem);
         }
     }
 }

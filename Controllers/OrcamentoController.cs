@@ -11,10 +11,11 @@ namespace Projeto_Budget.Controllers
     {
         public bool VerificarLogin()
         {
-            if (Session["Login"] != null)
+            if (Session["LoginGF"] != null)
             {
                 return true;
             }
+            else if (Session["LoginGS"] != null) { return true; }
             return false;
         }
         BDBudgetEntities db = new BDBudgetEntities();
@@ -25,18 +26,19 @@ namespace Projeto_Budget.Controllers
             {
                 return View(db.CentroGasto.ToList());
             }
-            else{
-                return RedirectToAction("TelaLogin","Login");
+            else
+            {
+                return RedirectToAction("TelaLogin", "Login");
             }
-          
+
         }
 
         [HttpPost]
-        public ActionResult cadastro(string nomeOrcamento,int idCentroGasto, float valorAlocacao,DateTime dataInicio,DateTime dataFim)
+        public ActionResult cadastro(string nomeOrcamento, int idCentroGasto, float valorAlocacao, DateTime dataInicio, DateTime dataFim)
         {
             Orcamento orcamento = new Orcamento();
 
-            CentroGasto cg  = db.CentroGasto.Find(idCentroGasto);
+            CentroGasto cg = db.CentroGasto.Find(idCentroGasto);
 
             orcamento.nomeOrcamento = nomeOrcamento;
             orcamento.idcentrogasto = idCentroGasto;
@@ -48,7 +50,7 @@ namespace Projeto_Budget.Controllers
             db.SaveChanges();
             Session["orcamento"] = orcamento.idOrcamento;
 
-            return RedirectToAction("Index","ItemOrcamentario");
+            return RedirectToAction("ListaItens", "ItemOrcamentario");
         }
 
         public ActionResult ListaGF()
@@ -57,38 +59,71 @@ namespace Projeto_Budget.Controllers
             {
                 return View(db.Orcamento.ToList());
             }
+            else if (Session["LoginGS"] != null)
+            {
+                return RedirectToAction("ListaGS", "Orcamento");
+            }
             else
             {
                 return RedirectToAction("TelaLogin", "Login");
             }
         }
+
         public ActionResult ListaGS()
         {
             if (Session["LoginGS"] != null)
             {
                 Funcionario func = (Funcionario)Session["LoginGS"];
-                return View(db.Orcamento.ToList().Find(x => x.CentroGasto.idFuncionario == func.idFuncionario));
+                CentroGasto cGasto = db.CentroGasto.ToList().Find(x => x.idFuncionario == func.idFuncionario);
+                return View(db.Orcamento.SqlQuery($"SELECT * FROM dbo.Orcamento WHERE idcentrogasto = {cGasto.idCentroGasto}").ToList());
+
+
+            }
+            else if (Session["LoginGF"] != null)
+            {
+                return RedirectToAction("ListaGF", "Orcamento");
             }
             else
             {
                 return RedirectToAction("TelaLogin", "Login");
             }
         }
+
         public ActionResult Acessar(int id)
         {
-            Session["idOrca"] = id;
-            return RedirectToAction("ListaItens", "ItemOrcamentario");
+            if (Session["LoginGF"] != null)
+            {
+                Session["idOrca"] = id;
+                return RedirectToAction("ListaItens", "ItemOrcamentario");
+            }
+            else if (Session["LoginGS"] != null)
+            {
+                Session["idOrca"] = id;
+                return RedirectToAction("ListaItens", "ItemOrcamentario");
+            }
+            else
+            {
+                return RedirectToAction("TelaLogin", "Login");
+            }
+
         }
 
         public ActionResult aprovado(int id)
         {
-            Orcamento orca = db.Orcamento.Find(id);
-            orca.idOrcamento = id;
-            orca.situacao = "A";
-            db.Orcamento.Add(orca);
-            db.SaveChanges();
+            if (Session["LoginGF"] != null)
+            {
+                Orcamento orca = db.Orcamento.Find(id);
+                orca.idOrcamento = id;
+                orca.situacao = "A";
+                db.Orcamento.Add(orca);
+                db.SaveChanges();
 
-            return RedirectToAction("ListaGF");
+                return RedirectToAction("ListaGF");
+            }
+            else
+            {
+                return RedirectToAction("TelaLogin", "Login");
+            }
         }
     }
 }

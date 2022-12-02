@@ -19,24 +19,25 @@
         </tr>
     </thead>
     <tbody>
-          @if (Model.situacao == null)
-           {  <tr>
-                   <th scope="row">@Model.nomeOrcamento</th>
-                   <td>@Model.valorAplicado</td>
-                   <td>@Model.dataInicio</td>
-                   <td>@Model.dataFim</td>
-                   <td>
+        @foreach(var item in Model){
+            if (item.situacao == null)
+            {
+                <tr>
+                    <th scope="row">@item.nomeOrcamento</th>
+                    <td>@item.valorAplicado</td>
+                    <td>@item.dataInicio</td>
+                    <td>@item.dataFim</td>
+                    <td>
+                    </td>
+                    <td>
+                        <a href="/Orcamento/acessar?id=@item.idOrcamento" role="button" class="btn btn-primary">Acessar</a>
+                        <a href="" role="button" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
 
-                   </td>
-                   <td>
-                      <a href="/Orcamento/acessar?id=@Model.idOrcamento" role="button" class="btn btn-primary">Acessar</a>
-                      <a href="" role="button" class="btn btn-danger">Excluir</a>
-                   </td>
-              </tr>
-              
-           }
+            }
+         }
 
-       
     </tbody>
 </table>
 <br />

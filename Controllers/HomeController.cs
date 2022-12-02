@@ -14,7 +14,8 @@ namespace Projeto_Budget.Controllers
             if (Session["LoginGF"] != null)
             {
                 return true;
-            }else if (Session["LoginGS"] != null) { return true; }
+            }
+            else if (Session["LoginGS"] != null) { return true; }
             return false;
         }
         public ActionResult Index()
@@ -49,7 +50,7 @@ namespace Projeto_Budget.Controllers
         }
         public ActionResult TelaGS()
         {
-            
+
             if (VerificarLogin())
             {
                 return View((Funcionario)Session["LoginGS"]);
