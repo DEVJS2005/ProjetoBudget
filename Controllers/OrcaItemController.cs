@@ -9,6 +9,15 @@ namespace ProjetoBudget.Controllers
 {
     public class OrcaItemController : Controller
     {
+        public bool VerificarLogin()
+        {
+            if (Session["LoginGF"] != null)
+            {
+                return true;
+            }
+            else if (Session["LoginGS"] != null) { return true; }
+            return false;
+        }
         BDBudgetEntities bd = new BDBudgetEntities();
         // GET: OrcaItem
 
@@ -71,12 +80,20 @@ namespace ProjetoBudget.Controllers
         [HttpGet]
         public ActionResult ListaItens()
         {
-            itensOrcamentarios itensO = Session["carrinho"] != null ? (itensOrcamentarios)Session["carrinho"] : new itensOrcamentarios();
-            if (itensO != null)
+            if (VerificarLogin())
             {
-                return View(itensO);
+                itensOrcamentarios itensO = Session["carrinho"] != null ? (itensOrcamentarios)Session["carrinho"] : new itensOrcamentarios();
+                if (itensO != null)
+                {
+                    return View(itensO);
+                }
+                return RedirectToAction("ListaItens", "itemOrcamentario");
             }
-            return RedirectToAction("ListaItens", "itemOrcamentario");
+            else
+            {
+                return RedirectToAction("TelaLogin","Login");
+            }
+            
 
         }
         [HttpGet]

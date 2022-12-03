@@ -39,7 +39,7 @@
 
                 @if (item.itensOrcamentarios.tipoGasto == "C" || item.itensOrcamentarios.tipoGasto == "D")
                  {
-                   <td> <input type="text" name="vlrAplicado" class="form-check-input" id="exampleCheck1" /> </td>
+                   <td> <input type="text" name="vlrAplicado" class="form-check-input" id="vlrAplicado" value="0" /> </td>
                  }
                 <td>
                     <a href="/OrcaItem/alterPrioridade?idItemOrca=@item.idItemorcamentario" role="button" class="btn btn-primary"> Modificar Prioridade </a>
@@ -49,11 +49,20 @@
          }
         </tbody>
 </table>
+<input id="total" name="total" disabled="" /> 
 <br />
 <a href="/itemOrcamentario/ListaItens" role="button" class="btn btn-primary">Lista Itens </a>
 
 @section Scripts{
     <script>
-
+        var vlr = document.getElementById("vlrAplicado").value;
+        var somaT;
+        vlr.addEventListener('keyup', somarVlr);
+        function somarVlr() {
+            if (vlr >= 0) {
+                somaT += vlr;
+                document.getElementById("total").innerHTML = somaT;
+            }
+        }
     </script>
 }
