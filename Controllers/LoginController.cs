@@ -15,7 +15,7 @@ namespace ProjetoBudget.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
         public ActionResult Login(string matricula, string senha)
         {
@@ -41,5 +41,6 @@ namespace ProjetoBudget.Controllers
                 return View("TelaLogin");
             }
         }
+        
     }
 }

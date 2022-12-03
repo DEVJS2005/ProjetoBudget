@@ -38,6 +38,7 @@ namespace Projeto_Budget.Controllers
         }
         public ActionResult TelaGF()
         {
+            
             if (VerificarLogin())
             {
                 return View((Funcionario)Session["LoginGF"]);
@@ -46,11 +47,12 @@ namespace Projeto_Budget.Controllers
             {
                 return RedirectToAction("TelaLogin", "Login");
             }
+            
 
         }
         public ActionResult TelaGS()
         {
-
+            
             if (VerificarLogin())
             {
                 return View((Funcionario)Session["LoginGS"]);
@@ -59,6 +61,7 @@ namespace Projeto_Budget.Controllers
             {
                 return RedirectToAction("TelaLogin", "Login");
             }
+            
         }
 
     }

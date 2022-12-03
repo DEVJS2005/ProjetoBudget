@@ -14,28 +14,29 @@
     </thead>
     <tbody>
         @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.descricaoItem</td>
-                @switch (item.tipoGasto)
-                 {
-                    case "C":
-                        <td> Custo </td>
-                        break;
-                    case "I":
-                        <td> Investimento </td>
-                        break;
-                    case "D":
-                        <td> Despesa </td>
-                        break;
-                 }
+            {
+                <tr>
+                    <td>@item.descricaoItem</td>
+                    @switch (item.tipoGasto)
+                    {
+                        case "C":
+                            <td> Custo </td>
+                            break;
+                        case "I":
+                            <td> Investimento </td>
+                            break;
+                        case "D":
+                            <td> Despesa </td>
+                            break;
+                    }
                 <td>@item.TipoItem.nomeTipoItem</td>
-                <td>@item.valorUnitario </td>
+                <td>@item.valorUnitario</td>
                 <td> <a href="/OrcaItem/alterPrioridade?idI=@item.idItemOrcamentario" class="btn btn-success"> Adicionar ao orçamento </a> </td>
                 <td> <a class="btn btn-warning"> Editar </a> </td>
                 <td> <a class="btn btn-danger"> Excluir </a>
             </tr>  
-         }
+            }
+        }
            
         </tbody>
 </table>

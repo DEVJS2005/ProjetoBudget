@@ -24,7 +24,7 @@ namespace Projeto_Budget.Controllers
 
         public ActionResult ListaItens()
         {
-
+            
             if (VerificarLogin())
             {
                 return View(db.itensOrcamentarios.ToList());
@@ -38,13 +38,14 @@ namespace Projeto_Budget.Controllers
             {
                 return RedirectToAction("TelaLogin", "Login");
             }
-
+            
 
         }
 
         [HttpGet]
         public ActionResult Cadastro()
         {
+            
             if (VerificarLogin())
             {
                 return View(db.TipoItem.ToList());
@@ -53,6 +54,7 @@ namespace Projeto_Budget.Controllers
             {
                 return RedirectToAction("TelaLogin", "Login");
             }
+            
 
         }
 

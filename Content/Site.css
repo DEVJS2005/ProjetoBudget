@@ -31,7 +31,7 @@ textarea {
 .form-check-input {
     background-color: #363838;
     color:white;
-    padding-left:18px;
+    padding-left:20px;
     margin:5px;
 }
 .tipo_gasto {
@@ -91,7 +91,11 @@ textarea {
     background-color: #D2D4D6;
     font-size:18px;
 }
-.Bem-vindo {
+.Bem_vindo {
+    color:white;
+    font-size:30px;
+}
+.nav-link active {
     color:white;
 }
 
