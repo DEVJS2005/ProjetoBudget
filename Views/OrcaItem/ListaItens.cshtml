@@ -13,7 +13,11 @@
             <th scope="col"> Nome Item: </th>
             <th scope="col"> Prioridade: </th>
             <th scope="col"> Observação: </th>
-            <th scope="col"> Valor aplicado  </th>
+            <th scope="col"> Quantidade: </th>
+            <th scope="col"> Valor aplicado:  </th>
+            <th scope="col">  </th>
+
+
         </tr>
     </thead>
     <tbody>
@@ -25,27 +29,26 @@
 
                 @if (item.prioridade == "A")
                 {
-                   <td>Alta</td>
+                    <td>Alta</td>
                 }
                 else if (item.prioridade == "M")
                 {
-                  <td> Média </td>
+                    <td> Média </td>
                 }
                 else
                 {
-                  <td> Baixa </td>
+                    <td> Baixa </td>
                 }
                 <td>@item.observacao</td>
-
-                @if (item.itensOrcamentarios.tipoGasto == "C" || item.itensOrcamentarios.tipoGasto == "D")
-                 {
-                   <td> <input type="text" name="vlrAplicado" class="form-check-input" id="vlrAplicado" value="0" onblur="somarVlr()" /> </td>
-                 }
+                <td>@item.quantItem</td>
+                <td> @item.total  </td>
+                <td> </td>
                 <td>
                     <a href="/OrcaItem/alterPrioridade?idItemOrca=@item.idItemorcamentario" role="button" class="btn btn-primary"> Modificar Prioridade </a>
                     <a href="" role="button" class="btn btn-danger"> Remover </a>
                 </td>
-           </tr>
+
+            </tr>
          }
         </tbody>
 </table>
@@ -55,14 +58,6 @@
 
 @section Scripts{
     <script>
-        var vlr = document.getElementsByName("vlrAplicado");
-        var somaT, vlrF;
-        function somarVlr() {
-            vlrF = vlr.values;
-            if (vlrF >= 0) {
-                somaT += vlrF;
-                document.getElementById("total").values = somaT;
-            }
-        }
+      
     </script>
 }

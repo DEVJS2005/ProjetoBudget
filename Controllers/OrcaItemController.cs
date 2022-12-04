@@ -51,17 +51,31 @@ namespace ProjetoBudget.Controllers
                 pedOI.itensOrcamentarios = item;
                 pedOI.observacao = orcItem.observacao;
                 pedOI.prioridade = orcItem.prioridade;
+                if(item.tipoGasto == "I")
+                {
+                    pedOI.total = pedOI.quantItem * item.valorUnitario;
+                }
+                else
+                {
+                    pedOI.total = orcItem.total;
+                }
+                
 
-                foreach (var obj in item.OrcaItem)
+                foreach (var obj in itensO.OrcaItem)
                 {
                     if (obj.itensOrcamentarios.idItemOrcamentario == item.idItemOrcamentario)
                     {
                         obj.quantItem += 1;
+                        if(obj.itensOrcamentarios.tipoGasto == "I")
+                        {
+                            obj.total = obj.quantItem * item.valorUnitario;
+                        }
                         objProduto = true;
                         break;
                     }
 
                 }
+                
 
                 if (objProduto == false)
                 {
@@ -93,9 +107,10 @@ namespace ProjetoBudget.Controllers
             {
                 return RedirectToAction("TelaLogin","Login");
             }
-            
+
 
         }
+
         [HttpGet]
         public ActionResult alterPrioridade(int idI)
         {
@@ -108,13 +123,16 @@ namespace ProjetoBudget.Controllers
             {
                 idOrcamento = (int)Session["orcamento"];
             }
+            itensOrcamentarios ItemOrca = bd.itensOrcamentarios.ToList().Find(x => x.idItemOrcamentario == idI);
             OrcaItem orcItem = new OrcaItem();
             orcItem.idItemorcamentario = idI;
+            orcItem.itensOrcamentarios = ItemOrca;
             orcItem.idorcamento = idOrcamento;
             return View(orcItem);
         }
+
         [HttpPost]
-        public ActionResult alterPrioridade(string prioridade, string observacao, int idItemOrc)
+        public ActionResult alterPrioridade(string prioridade, string observacao, int idItemOrc, string total)
         {
             int idOrcamento;
             if (Session["orcamento"] == null)
@@ -125,11 +143,14 @@ namespace ProjetoBudget.Controllers
             {
                 idOrcamento = (int)Session["orcamento"];
             }
+            itensOrcamentarios iOrca = bd.itensOrcamentarios.Find(idItemOrc);
             OrcaItem orcItem = new OrcaItem();
             orcItem.prioridade = prioridade;
             orcItem.observacao = observacao;
             orcItem.idorcamento = idOrcamento;
             orcItem.idItemorcamentario = idItemOrc;
+            orcItem.itensOrcamentarios = iOrca;
+            orcItem.total = Convert.ToDouble(total);
             return RedirectToAction("AddItem", "OrcaItem", orcItem);
         }
     }
