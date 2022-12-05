@@ -44,7 +44,7 @@ namespace ProjetoBudget.Controllers
             if (item != null)
             {
                 OrcaItem pedOI = new OrcaItem();
-                pedOI.itensOrcamentarios = item;
+                pedOI.idItemorcamentario = item.idItemOrcamentario;
                 pedOI.quantItem = 1;
                 pedOI.idorcamento = orcamento.idOrcamento;
                 pedOI.Orcamento = orcamento;
@@ -119,9 +119,13 @@ namespace ProjetoBudget.Controllers
             {
                 idOrcamento = (int)Session["idOrca"];
             }
-            else
+            else if(Session["idOrca"] == null)
             {
                 idOrcamento = (int)Session["orcamento"];
+            }
+            else
+            {
+                return RedirectToAction("ListaGF","Orcamento");
             }
             itensOrcamentarios ItemOrca = bd.itensOrcamentarios.ToList().Find(x => x.idItemOrcamentario == idI);
             OrcaItem orcItem = new OrcaItem();
@@ -152,6 +156,11 @@ namespace ProjetoBudget.Controllers
             orcItem.itensOrcamentarios = iOrca;
             orcItem.total = Convert.ToDouble(total);
             return RedirectToAction("AddItem", "OrcaItem", orcItem);
+        }
+        public ActionResult alterOrcaItem(int idOrcamento, int idItemOrc)
+        {
+            OrcaItem orcaItem = bd.OrcaItem.ToList().Find(x => x.idorcamento == idOrcamento && x.idItemorcamentario == idItemOrc);
+            return View(orcaItem);
         }
     }
 }

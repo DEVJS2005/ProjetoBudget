@@ -392,6 +392,7 @@
     <Content Include="Views\Home\TelaGS.cshtml" />
     <Content Include="Views\Home\TelaGF.cshtml" />
     <Content Include="Views\Orcamento\ListaGS.cshtml" />
+    <Content Include="Views\OrcaItem\alterOrcaItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

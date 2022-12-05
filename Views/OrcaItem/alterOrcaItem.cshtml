@@ -1,0 +1,48 @@
+﻿@Model ProjetoBudget.Models.OrcaItem
+@{
+    ViewBag.Title = "Alterar Item Listado";
+}
+<div class="text-center">
+    <form name="AlterPrioridade" method="post" action="/OrcaItem/alterPrioridade?idItemOrc=@Model.idItemorcamentario">
+        <label> Selecione a Prioridade do item @Model.itensOrcamentarios.descricaoItem: </label>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault1" value="A" onclick="alterarVisibilidade('divObs','Alta')"> Alta
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault2" value="M" onclick="alterarVisibilidade('divObs','Média')"> Média
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault2" value="B" onclick="alterarVisibilidade('divObs','Baixa')"> Baixa
+        </div>
+
+        <div class="form-check" id="divObs" style="display:none">
+
+            <label> Observação: </label>
+            <textarea class="form-check-input" type="text" name="observacao" id="flexRadioDefault2" maxlength="1000"> </textarea>
+
+        </div>
+
+        @if (Model.itensOrcamentarios.tipoGasto == "C" || Model.itensOrcamentarios.tipoGasto == "D")
+         {
+            <label>Valor aplicado ao: @Model.itensOrcamentarios.descricaoItem </label>
+            <input type="text" name="total" value="@Model.total"/>
+         }
+
+        <button type="submit" class="btn btn-success"> Salvar </button>
+    </form>
+</div>
+@section Scripts{
+    <script>
+        function alterarVisibilidade(id, campoClick) {
+            var display = document.getElementById(id).style.display;
+            if (campoClick == "Alta") {
+                document.getElementById(id).style.display = 'block';
+            } else if (campoClick == "media") {
+                document.getElementById(id).style.display = 'none';
+            } else { document.getElementById(id).style.display = 'none'; }
+        }
+    </script>
+}
