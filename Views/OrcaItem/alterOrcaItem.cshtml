@@ -3,7 +3,7 @@
     ViewBag.Title = "Alterar Item Listado";
 }
 <div class="text-center">
-    <form name="AlterPrioridade" method="post" action="/OrcaItem/alterPrioridade?idItemOrc=@Model.idItemorcamentario">
+    <form name="alterOrcaItem" method="post" action="/OrcaItem/alterOrcaItem?idItemOrc=@Model.idItemorcamentario&idOrcamento=@Model.idorcamento">
         <label> Selecione a Prioridade do item @Model.itensOrcamentarios.descricaoItem: </label>
         
         <div class="form-check">
@@ -31,7 +31,7 @@
             <input type="text" name="total" value="@Model.total"/>
          }
 
-        <button type="submit" class="btn btn-success"> Salvar </button>
+        <button type="submit" class="btn btn-success"> Salvar alterações </button>
     </form>
 </div>
 @section Scripts{

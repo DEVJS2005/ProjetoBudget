@@ -157,10 +157,40 @@ namespace ProjetoBudget.Controllers
             orcItem.total = Convert.ToDouble(total);
             return RedirectToAction("AddItem", "OrcaItem", orcItem);
         }
+        [HttpGet]
         public ActionResult alterOrcaItem(int idOrcamento, int idItemOrc)
         {
-            OrcaItem orcaItem = bd.OrcaItem.ToList().Find(x => x.idorcamento == idOrcamento && x.idItemorcamentario == idItemOrc);
-            return View(orcaItem);
+
+            itensOrcamentarios itemOrc = (itensOrcamentarios)Session["carrinho"];
+            foreach (var item in itemOrc.OrcaItem)
+            {
+                if(item.idorcamento == idOrcamento && item.idItemorcamentario == idItemOrc)
+                {
+                    return View(item);
+                }
+            }
+            return RedirectToAction("ListaItens", "ItemOrcamentario");
+
+        }
+        
+       [HttpPost]
+        public ActionResult alterOrcaItem(string prioridade, string observacao, int idItemOrc,int idOrcamento , string total)
+        {
+
+            itensOrcamentarios itemOrc = (itensOrcamentarios)Session["carrinho"];
+            foreach (var item in itemOrc.OrcaItem)
+            {
+                if (item.idorcamento == idOrcamento && item.idItemorcamentario == idItemOrc)
+                {
+                    item.idorcamento = idOrcamento;
+                    item.idItemorcamentario = idItemOrc;
+                    item.prioridade = prioridade;
+                    item.total = Convert.ToDouble(total);
+                    item.observacao= observacao;
+                    return RedirectToAction("ListaItens");
+                }
+            }
+            return View();
         }
     }
 }
