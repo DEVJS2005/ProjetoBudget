@@ -22,7 +22,7 @@
         <tr>
             @foreach (var item in Model)
             {
-                if (item.situacao == null)
+                if (item.situacao == null || item.situacao == "PD")
                 {
                     <th scope="row">@item.nomeOrcamento</th>
                     <td>@item.valorAplicado</td>

@@ -37,8 +37,6 @@ namespace ProjetoBudget.Controllers
             }
 
             Orcamento orcamento = bd.Orcamento.Find(idOrcamento);
-
-
             itensOrcamentarios item = bd.itensOrcamentarios.Find(orcItem.idItemorcamentario);
 
             if (item != null)
@@ -69,6 +67,7 @@ namespace ProjetoBudget.Controllers
                         if(obj.itensOrcamentarios.tipoGasto == "I")
                         {
                             obj.total = obj.quantItem * item.valorUnitario;
+                            pedOI.somaT += obj.total;
                         }
                         objProduto = true;
                         break;
@@ -79,7 +78,9 @@ namespace ProjetoBudget.Controllers
 
                 if (objProduto == false)
                 {
+                    pedOI.somaT += pedOI.total;
                     itensO.OrcaItem.Add(pedOI);
+                    
                 }
 
 
@@ -90,6 +91,22 @@ namespace ProjetoBudget.Controllers
 
             return RedirectToAction("Listaitens");
         }
+
+        
+        public ActionResult EndOrcamento() 
+        {
+            itensOrcamentarios itensO = Session["carrinho"] != null ? (itensOrcamentarios)Session["carrinho"] : new itensOrcamentarios();
+            foreach (var item in itensO.OrcaItem)
+            {
+                bd.OrcaItem.Add(item);
+                bd.SaveChanges();
+            }
+
+            return RedirectToAction("TelaGS","Home");
+        }
+
+
+
 
         [HttpGet]
         public ActionResult ListaItens()
@@ -157,6 +174,7 @@ namespace ProjetoBudget.Controllers
             orcItem.total = Convert.ToDouble(total);
             return RedirectToAction("AddItem", "OrcaItem", orcItem);
         }
+
         [HttpGet]
         public ActionResult alterOrcaItem(int idOrcamento, int idItemOrc)
         {
