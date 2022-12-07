@@ -4,6 +4,8 @@
 }
 <div class="text-center">
     <form name="AlterPrioridade" method="post" action="/OrcaItem/alterPrioridade?idItemOrc=@Model.idItemorcamentario">
+        <br />
+        <br />
         <hr />
         <br />
         <label class="titulo_alter">Selecione a Prioridade do item: @Model.itensOrcamentarios.descricaoItem </label>
@@ -18,21 +20,25 @@
         <div class="form-check">
             <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault2" value="B" onclick="alterarVisibilidade('divObs','Baixa')"> Baixa
         </div>
+        <br />
         <div class="form-check" id="divObs" style="display:none">
             <br />
             <label style="color:white"> Observação: </label>
             <br />
-            <textarea class="form-check-input" type="text" name="observacao" id="flexRadioDefault2" maxlength="1000"> </textarea>
+            <textarea class="form-check-input" type="text" name="observacao" id="flexRadioDefault2" maxlength="1000" > </textarea>
 
         </div>
         <br />
+        <hr />
         @if (Model.itensOrcamentarios.tipoGasto == "C" || Model.itensOrcamentarios.tipoGasto == "D")
          {
-            <label>Valor aplicado ao: @Model.itensOrcamentarios.descricaoItem </label>
-            <input type="text" class="input_alter" name="total"  />
+            <label style="color:white;font-size:19px">Valor aplicado ao: @Model.itensOrcamentarios.descricaoItem </label>
+            
+            <input type="text" class="input_alter" name="total" value="" placeholder="Ex: R$1.500" />
          }
-
-        <button type="submit" class="btn  btn-success"> Salvar </button>
+        <br />
+        <br />
+        <button type="submit" class="btn btn-success"> Salvar </button>
         <br />
         <br />
     </form>

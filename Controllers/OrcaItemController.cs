@@ -99,7 +99,7 @@ namespace ProjetoBudget.Controllers
 
             foreach (var item in itensO.OrcaItem)
             {
-                bd.OrcaItem.Add(item);
+                bd.OrcaItem.SqlQuery("INSERT INTO OrcaItem(idorcamento,idItemorcamentario,quantItem,observacao,prioridade) values ({item.idorcamento},{item.idItemorcamentario},{item.quantItem},{item.observacao},{item.prioridade})");
                 bd.SaveChanges();
             }
 
