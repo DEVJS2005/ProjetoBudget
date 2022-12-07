@@ -98,5 +98,19 @@ textarea {
 .nav-link active {
     color:white;
 }
+.nav-link {
+    color:white;
+}
+.titulo_alter {
+    color:white;
+    font-size:20px;
+}
+.input_alter {
+   
+    display:block;
+}
+.form-check-input {
+    resize:none;
+}
 
 

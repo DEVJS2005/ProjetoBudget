@@ -96,6 +96,7 @@ namespace ProjetoBudget.Controllers
         public ActionResult EndOrcamento() 
         {
             itensOrcamentarios itensO = Session["carrinho"] != null ? (itensOrcamentarios)Session["carrinho"] : new itensOrcamentarios();
+
             foreach (var item in itensO.OrcaItem)
             {
                 bd.OrcaItem.Add(item);

@@ -30,6 +30,7 @@ namespace ProjetoBudget.Models
         public virtual DbSet<itensOrcamentarios> itensOrcamentarios { get; set; }
         public virtual DbSet<OrcaItem> OrcaItem { get; set; }
         public virtual DbSet<Orcamento> Orcamento { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TipoItem> TipoItem { get; set; }
     }
 }

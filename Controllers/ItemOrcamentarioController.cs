@@ -24,11 +24,6 @@ namespace Projeto_Budget.Controllers
 
         public ActionResult ListaItens()
         {
-            
-            if (VerificarLogin())
-            {
-                return View(db.itensOrcamentarios.ToList());
-            }
             if (VerificarLogin())
             {
                 return View(db.itensOrcamentarios.ToList());
