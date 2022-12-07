@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream:Models/CoenxaoDB.Designer.cs
 ﻿// T4 code generation is enabled for model 'C:\Users\android\Documents\GitHub\ProjetoBudget\Models\CoenxaoDB.edmx'. 
+=======
+﻿// T4 code generation is enabled for model 'C:\Users\Android\Documents\GitHub\ProjetoBudget\Models\ConexaoDB.edmx'. 
+>>>>>>> Stashed changes:Models/ConexaoDB.Designer.cs
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

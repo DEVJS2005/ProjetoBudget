@@ -69,7 +69,7 @@ namespace Projeto_Budget.Controllers
             }
             db.itensOrcamentarios.Add(Io);
             db.SaveChanges();
-            return View("ListaItens");
+            return RedirectToAction("ListaItens");
         }
     }
 }
