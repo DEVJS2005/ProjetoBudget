@@ -32,7 +32,7 @@
         <hr />
         @if (Model.itensOrcamentarios.tipoGasto == "C" || Model.itensOrcamentarios.tipoGasto == "D")
          {
-            <label style="color:white;font-size:19px">Valor aplicado ao: @Model.itensOrcamentarios.descricaoItem </label>
+            <label style="color:white;font-size:19px">Valor aplicado ao @Model.itensOrcamentarios.descricaoItem: </label>
             
             <input type="text" class="input_alter" name="total" value="" placeholder="Ex: R$1.500" />
          }

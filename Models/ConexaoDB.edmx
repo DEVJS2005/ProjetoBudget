@@ -57,16 +57,6 @@
           <Property Name="valorAplicado" Type="float" Nullable="false" />
           <Property Name="idcentrogasto" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TipoItem">
           <Key>
             <PropertyRef Name="idTipoItem" />
@@ -140,7 +130,6 @@
           <EntitySet Name="itensOrcamentarios" EntityType="Self.itensOrcamentarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrcaItem" EntityType="Self.OrcaItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orcamento" EntityType="Self.Orcamento" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoItem" EntityType="Self.TipoItem" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CentroGasto_Funcionario" Association="Self.FK_CentroGasto_Funcionario">
             <End Role="Funcionario" EntitySet="Funcionario" />
@@ -229,16 +218,6 @@
           <NavigationProperty Name="CentroGasto" Relationship="Self.FK_Orcamento_CentroGasto" FromRole="Orcamento" ToRole="CentroGasto" />
           <NavigationProperty Name="OrcaItem" Relationship="Self.FK_OrcaItem_Orcamento" FromRole="Orcamento" ToRole="OrcaItem" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="TipoItem">
           <Key>
             <PropertyRef Name="idTipoItem" />
@@ -313,7 +292,6 @@
           <EntitySet Name="itensOrcamentarios" EntityType="Self.itensOrcamentarios" />
           <EntitySet Name="OrcaItem" EntityType="Self.OrcaItem" />
           <EntitySet Name="Orcamento" EntityType="Self.Orcamento" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TipoItem" EntityType="Self.TipoItem" />
           <AssociationSet Name="FK_CentroGasto_Funcionario" Association="Self.FK_CentroGasto_Funcionario">
             <End Role="Funcionario" EntitySet="Funcionario" />
@@ -395,17 +373,6 @@
                 <ScalarProperty Name="observacao" ColumnName="observacao" />
                 <ScalarProperty Name="valorAplicado" ColumnName="valorAplicado" />
                 <ScalarProperty Name="idcentrogasto" ColumnName="idcentrogasto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="BDBudgetModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

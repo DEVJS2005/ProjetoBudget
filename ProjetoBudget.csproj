@@ -294,40 +294,37 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CentroGasto.cs">
-      <DependentUpon>ConexaDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ConexaDB.Context.cs">
+    <Compile Include="Models\ConexaoDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConexaDB.Context.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ConexaDB.cs">
+    <Compile Include="Models\ConexaoDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConexaDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ConexaDB.Designer.cs">
+    <Compile Include="Models\ConexaoDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConexaDB.edmx</DependentUpon>
+      <DependentUpon>ConexaoDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Funcionario.cs">
-      <DependentUpon>ConexaDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\itensOrcamentarios.cs">
-      <DependentUpon>ConexaDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrcaItem.cs">
-      <DependentUpon>ConexaDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Orcamento.cs">
-      <DependentUpon>ConexaDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>ConexaDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoItem.cs">
-      <DependentUpon>ConexaDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -340,24 +337,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ConexaDB.Context.tt">
+    <Content Include="Models\ConexaoDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ConexaDB.edmx</DependentUpon>
-      <LastGenOutput>ConexaDB.Context.cs</LastGenOutput>
+      <DependentUpon>ConexaoDB.edmx</DependentUpon>
+      <LastGenOutput>ConexaoDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ConexaDB.tt">
+    <Content Include="Models\ConexaoDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ConexaDB.edmx</DependentUpon>
-      <LastGenOutput>ConexaDB.cs</LastGenOutput>
+      <DependentUpon>ConexaoDB.edmx</DependentUpon>
+      <LastGenOutput>ConexaoDB.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\ConexaDB.edmx">
+    <EntityDeploy Include="Models\ConexaoDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ConexaDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>ConexaoDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ConexaDB.edmx.diagram">
-      <DependentUpon>ConexaDB.edmx</DependentUpon>
+    <Content Include="Models\ConexaoDB.edmx.diagram">
+      <DependentUpon>ConexaoDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -435,7 +432,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52031</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53322/</IISUrl>
+          <IISUrl>http://localhost:57064/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
