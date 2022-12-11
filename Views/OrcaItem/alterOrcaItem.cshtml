@@ -3,9 +3,9 @@
     ViewBag.Title = "Alterar Item Listado";
 }
 <div class="text-center">
-    <form name="alterOrcaItem" method="post" action="/OrcaItem/alterOrcaItem?idItemOrc=@Model.idItemorcamentario&idOrcamento=@Model.idorcamento">
+    <form name="alterOrcaItem" method="post" action="/OrcaItem/alterOrcaItem?idItemOrc=@Model.idItemorcamentario&idOrcamento=@Model.idorcamento&vlrUnit=@Model.itensOrcamentarios.valorUnitario">
         <label> Selecione a Prioridade do item @Model.itensOrcamentarios.descricaoItem: </label>
-        
+
         <div class="form-check">
             <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault1" value="A" onclick="alterarVisibilidade('divObs','Alta')"> Alta
         </div>
@@ -18,6 +18,10 @@
             <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault2" value="B" onclick="alterarVisibilidade('divObs','Baixa')"> Baixa
         </div>
 
+        <div class="form-check">
+            <input class="form-check-input" type="number" name="quantItem" id="flexRadioDefault2" value="@Model.quantItem"> 
+        </div>
+
         <div class="form-check" id="divObs" style="display:none">
 
             <label> Observação: </label>
@@ -26,10 +30,10 @@
         </div>
 
         @if (Model.itensOrcamentarios.tipoGasto == "C" || Model.itensOrcamentarios.tipoGasto == "D")
-         {
+        {
             <label>Valor aplicado ao: @Model.itensOrcamentarios.descricaoItem </label>
-            <input type="text" name="total" value="@Model.total"/>
-         }
+            <input type="text" name="total" value="@Model.total" />
+        }
 
         <button type="submit" class="btn btn-success"> Salvar alterações </button>
     </form>

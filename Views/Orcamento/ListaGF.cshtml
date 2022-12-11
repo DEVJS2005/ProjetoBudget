@@ -19,10 +19,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            @foreach (var item in Model)
-            {
-                if (item.situacao == null || item.situacao == "PD")
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.situacao == null || item.situacao == "PD")
                 {
                     <th scope="row">@item.nomeOrcamento</th>
                     <td>@item.valorAplicado</td>
@@ -31,11 +32,12 @@
                     <td>
                         <div>
                             <a href="/orcamento/aprovado?id=@item.idOrcamento" class="btn btn-success"> Aprovado </a>
-                            <br /><a href="" class="btn btn-warning"> Aprovado Parcialmente </a>
-                            <br /><a href="" class="btn btn-danger"> Reprovado </a>
+                            <br /><a href="/orcamento/AprovaParcial?id=@item.idOrcamento" class="btn btn-warning"> Aprovado Parcialmente </a>
+                            <br /><a href="/orcamento/reprova?id=@item.idOrcamento" class="btn btn-danger"> Reprovado </a>
                         </div>
                     </td>
                     <td>
+
                     </td>
                     <td>
                         <a href="/Orcamento/acessar?id=@item.idOrcamento" role="button" class="btn btn-primary">Acessar</a>
@@ -43,10 +45,11 @@
                     </td>
 
                 }
-             }
+                
 
-        </tr>
-    </tbody>
+            </tr>
+        }
+        </tbody>
 </table>
 <br />
 <a href="" role="button" class="btn btn-primary"> Voltar</a>

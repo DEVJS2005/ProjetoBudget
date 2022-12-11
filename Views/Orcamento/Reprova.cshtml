@@ -1,0 +1,22 @@
+﻿@Model ProjetoBudget.Models.Orcamento
+
+@{
+    ViewBag.Title = "Tela de reprovação";
+}
+<br />
+<div class="text-center">
+    <h1 class="titulo_orc1"> Reprovação do Orçamento: @Model.nomeOrcamento </h1>
+</div>
+<br />
+<div class="text-justify">
+<form name="CadastroOrcamento" method="post" action="/Orcamento/Reprova?idOrcamento=@Model.idOrcamento">
+    <div class="form-group">
+        <label for="exampleInputEmail1" class="titulo_orc"> Motivo da reprovação: </label>
+        <br />
+        <textarea name="observacao">  </textarea>
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-danger"> Reprovar </button>
+</form>
+</div>

@@ -1,6 +1,7 @@
 ﻿using ProjetoBudget.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -108,6 +109,7 @@ namespace Projeto_Budget.Controllers
 
         }
 
+        [HttpGet]
         public ActionResult aprovado(int id)
         {
             if (Session["LoginGF"] != null)
@@ -115,7 +117,49 @@ namespace Projeto_Budget.Controllers
                 Orcamento orca = db.Orcamento.Find(id);
                 orca.idOrcamento = id;
                 orca.situacao = "A";
-                db.Orcamento.Add(orca);
+                db.Orcamento.AddOrUpdate(orca);
+                db.SaveChanges();
+
+                return RedirectToAction("ListaGF");
+            }
+            else if(Session["LoginGS"] != null)
+            {
+                return RedirectToAction("ListaGS", "orcamento");
+            }
+            else
+            {
+                return RedirectToAction("TelaLogin", "Login");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult AprovaParcial(int id)
+        {
+            if (Session["LoginGF"] != null)
+            {
+                return View(db.Orcamento.Find(id));
+            }
+            else if (Session["LoginGS"] != null)
+            {
+                return RedirectToAction("ListaGS", "orcamento");
+            }
+            else
+            {
+                return RedirectToAction("TelaLogin", "Login");
+            }
+            
+        }
+
+        [HttpPost]
+        public ActionResult AprovaParcial(string observacao, int idOrcamento)
+        {
+            if (Session["LoginGF"] != null)
+            {
+                Orcamento orc = db.Orcamento.Find(idOrcamento);
+                orc.idOrcamento = idOrcamento;
+                orc.situacao = "AP";
+                orc.observacao = observacao;
+                db.Orcamento.AddOrUpdate(orc);
                 db.SaveChanges();
 
                 return RedirectToAction("ListaGF");
@@ -124,6 +168,45 @@ namespace Projeto_Budget.Controllers
             {
                 return RedirectToAction("TelaLogin", "Login");
             }
+
+        }
+
+        [HttpGet]
+        public ActionResult Reprova(int id)
+        {
+
+            if (Session["LoginGF"] != null)
+            {
+                return View(db.Orcamento.Find(id));
+            }
+            else if (Session["LoginGS"] != null)
+            {
+                return RedirectToAction("ListaGS", "orcamento");
+            }
+            else
+            {
+                return RedirectToAction("TelaLogin", "Login");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Reprova(string observacao,int idOrcamento)
+        {
+            if (Session["LoginGF"] != null)
+            {
+                Orcamento orc = db.Orcamento.Find(idOrcamento);
+                orc.idOrcamento = idOrcamento;
+                orc.situacao = "R";
+                orc.observacao = observacao;
+                db.Orcamento.AddOrUpdate(orc);
+                db.SaveChanges();
+
+                return RedirectToAction("ListaGF");
+            }
+            else{
+                return RedirectToAction("TelaLogin", "Login");
+            }
+            
         }
     }
 }

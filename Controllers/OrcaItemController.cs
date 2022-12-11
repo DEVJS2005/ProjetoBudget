@@ -200,9 +200,8 @@ namespace ProjetoBudget.Controllers
         }
         
        [HttpPost]
-        public ActionResult alterOrcaItem(string prioridade, string observacao, int idItemOrc,int idOrcamento , string total)
+        public ActionResult alterOrcaItem(string prioridade, string observacao, int idItemOrc,int idOrcamento , string total,int quantItem,double vlrUnit)
         {
-
             itensOrcamentarios itemOrc = (itensOrcamentarios)Session["carrinho"];
             foreach (var item in itemOrc.OrcaItem)
             {
@@ -211,8 +210,16 @@ namespace ProjetoBudget.Controllers
                     item.idorcamento = idOrcamento;
                     item.idItemorcamentario = idItemOrc;
                     item.prioridade = prioridade;
-                    item.total = Convert.ToDouble(total);
+                    if(item.itensOrcamentarios.tipoGasto == "C" || item.itensOrcamentarios.tipoGasto == "D")
+                    {
+                        item.total = Convert.ToDouble(total);
+                    }
+                    else
+                    {
+                        item.total = quantItem * vlrUnit;
+                    }
                     item.observacao= observacao;
+                    item.quantItem= quantItem;
                     return RedirectToAction("ListaItens");
                 }
             }

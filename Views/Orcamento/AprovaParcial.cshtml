@@ -1,0 +1,26 @@
+﻿@Model ProjetoBudget.Models.Orcamento
+@{
+    ViewBag.Title = "Tela Aprovação Parcial";
+}
+<br />
+<div class="text-center">
+    <h1 class="titulo_orc1">Aprovação parcial do orçamento: @Model.nomeOrcamento</h1>
+</div>
+<br />
+<hr />
+<div class="text-justify">
+<form name="CadastroOrcamento" method="post" action="/Orcamento/AprovaParcial?idOrcamento=@Model.idOrcamento">
+    <div class="form-group">
+        <label for="exampleInputEmail1" class="titulo_orc"> Motivo da aprovação parcial: </label>
+        <br />
+        <textarea type="text" name="observacao" class="form-check-input" id="exampleCheck1" > </textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1" class="titulo_orc"> Valor Aplicado ao orçamento: </label>
+        <br />
+        <input type="text" name="valorAplicado" class="form-check-input" id="exampleCheck1" value="@Model.valorAplicado" />
+        <label>*Obeservação: Altere ou não o valor do orçamento para o desejado.</label>
+    </div>
+    <button type="submit" class="btn btn-primary"> Registrar </button>
+</form>
+</div>

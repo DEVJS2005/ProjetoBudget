@@ -36,12 +36,17 @@ namespace Projeto_Budget.Controllers
 
             return View();
         }
+
         public ActionResult TelaGF()
         {
             
-            if (VerificarLogin())
+            if (Session["LoginGF"] != null)
             {
                 return View((Funcionario)Session["LoginGF"]);
+            }
+            else if(Session["LoginGS"] != null)
+            {
+                return RedirectToAction("TelaGS", "Home");
             }
             else
             {
@@ -52,16 +57,20 @@ namespace Projeto_Budget.Controllers
         }
         public ActionResult TelaGS()
         {
-            
-            if (VerificarLogin())
+
+            if (Session["LoginGS"] != null)
             {
                 return View((Funcionario)Session["LoginGS"]);
+            }
+            else if (Session["LoginGF"] != null)
+            {
+                return RedirectToAction("TelaGF ", "Home");
             }
             else
             {
                 return RedirectToAction("TelaLogin", "Login");
             }
-            
+
         }
 
     }
