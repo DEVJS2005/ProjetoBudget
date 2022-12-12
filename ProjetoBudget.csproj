@@ -307,37 +307,37 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CentroGasto.cs">
-      <DependentUpon>CoenxaoDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CoenxaoDB.Context.cs">
+    <Compile Include="Models\ConexaoDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CoenxaoDB.Context.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CoenxaoDB.cs">
+    <Compile Include="Models\ConexaoDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CoenxaoDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CoenxaoDB.Designer.cs">
+    <Compile Include="Models\ConexaoDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CoenxaoDB.edmx</DependentUpon>
+      <DependentUpon>ConexaoDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Funcionario.cs">
-      <DependentUpon>CoenxaoDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\itensOrcamentarios.cs">
-      <DependentUpon>CoenxaoDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrcaItem.cs">
-      <DependentUpon>CoenxaoDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Orcamento.cs">
-      <DependentUpon>CoenxaoDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoItem.cs">
-      <DependentUpon>CoenxaoDB.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -350,24 +350,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\CoenxaoDB.Context.tt">
+    <Content Include="Models\ConexaoDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CoenxaoDB.edmx</DependentUpon>
-      <LastGenOutput>CoenxaoDB.Context.cs</LastGenOutput>
+      <DependentUpon>ConexaoDB.edmx</DependentUpon>
+      <LastGenOutput>ConexaoDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\CoenxaoDB.tt">
+    <Content Include="Models\ConexaoDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CoenxaoDB.edmx</DependentUpon>
-      <LastGenOutput>CoenxaoDB.cs</LastGenOutput>
+      <DependentUpon>ConexaoDB.edmx</DependentUpon>
+      <LastGenOutput>ConexaoDB.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\CoenxaoDB.edmx">
+    <EntityDeploy Include="Models\ConexaoDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CoenxaoDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>ConexaoDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\CoenxaoDB.edmx.diagram">
-      <DependentUpon>CoenxaoDB.edmx</DependentUpon>
+    <Content Include="Models\ConexaoDB.edmx.diagram">
+      <DependentUpon>ConexaoDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

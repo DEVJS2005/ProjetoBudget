@@ -4,11 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-<<<<<<< Updated upstream:Models/CoenxaoDB.edmx.diagram
-      <Diagram DiagramId="855136e592e84a638a9009cce09fcc1a" Name="Diagram1">
-=======
-      <Diagram DiagramId="8bea355cb38341dabe59a1e14498568c" Name="Diagram1">
->>>>>>> Stashed changes:Models/ConexaoDB.edmx.diagram
+      <Diagram DiagramId="8dbc2a60a2b34849a8a3b7c5040f9aab" Name="Diagram1">
         <EntityTypeShape EntityType="BDBudgetModel.CentroGasto" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BDBudgetModel.Funcionario" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BDBudgetModel.itensOrcamentarios" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
