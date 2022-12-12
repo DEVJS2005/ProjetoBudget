@@ -2,9 +2,11 @@
 @{
     ViewBag.Title = "Listagem Orcamentos";
 }
-
+<div class="text-center">
 <br />
 <h2 class="titulo_orc1"> Listagem de Orçamentos: </h2>
+</div>
+<hr />
 <br />
 <br />
 <table class="table">
@@ -26,18 +28,23 @@
                 @if (item.situacao == null || item.situacao == "PD")
                 {
                     <th scope="row">@item.nomeOrcamento</th>
+
                     <td>@item.valorAplicado</td>
+
                     <td>@item.dataInicio</td>
+
                     <td>@item.dataFim</td>
                     <td>
                         <div>
+                            <br />
                             <a href="/orcamento/aprovado?id=@item.idOrcamento" class="btn btn-success"> Aprovado </a>
+                            <br />
                             <br /><a href="/orcamento/AprovaParcial?id=@item.idOrcamento" class="btn btn-warning"> Aprovado Parcialmente </a>
+                            <br />
                             <br /><a href="/orcamento/reprova?id=@item.idOrcamento" class="btn btn-danger"> Reprovado </a>
                         </div>
                     </td>
                     <td>
-
                     </td>
                     <td>
                         <a href="/Orcamento/acessar?id=@item.idOrcamento" role="button" class="btn btn-primary">Acessar</a>
@@ -45,7 +52,7 @@
                     </td>
 
                 }
-                
+
 
             </tr>
         }

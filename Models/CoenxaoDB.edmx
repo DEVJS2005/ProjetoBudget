@@ -20,7 +20,7 @@
           <Property Name="idFuncionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nomeFuncionario" Type="varchar" MaxLength="35" Nullable="false" />
           <Property Name="matricula" Type="varchar" MaxLength="8" Nullable="false" />
-          <Property Name="senha" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="senha" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="cargo" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="itensOrcamentarios">
@@ -174,7 +174,7 @@
           <Property Name="idFuncionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomeFuncionario" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="matricula" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="senha" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cargo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CentroGasto" Relationship="Self.FK_CentroGasto_Funcionario" FromRole="Funcionario" ToRole="CentroGasto" />
         </EntityType>

@@ -5,15 +5,17 @@
 }
 <br />
 <div class="text-center">
-    <h1 class="titulo_orc1"> Reprovação do Orçamento: @Model.nomeOrcamento </h1>
-</div>
+    <br />
+    <h1 class="titulo_orc1" style="color:white"> Reprovação do Orçamento: @Model.nomeOrcamento </h1>
+    <br />
+    <hr />
 <br />
-<div class="text-justify">
 <form name="CadastroOrcamento" method="post" action="/Orcamento/Reprova?idOrcamento=@Model.idOrcamento">
     <div class="form-group">
-        <label for="exampleInputEmail1" class="titulo_orc"> Motivo da reprovação: </label>
+        <label for="exampleInputEmail1" class="titulo_orc" style="font-size:25px;color:white;"> Motivo da reprovação: </label>
         <br />
-        <textarea name="observacao">  </textarea>
+        <br />
+        <textarea name="observacao" style="width: 1000px; height: 250px; resize: none; background-color: #363838;color:white;">  </textarea>
     </div>
     <br />
     <br />

@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "Listagem Orçamentos";
 }
-<h2 class="tituloPcad"> Itens Orçamentarios cadastrados: </h2>
+<h2 class="tituloPcad" style="color:white;"> Itens Orçamentarios cadastrados: </h2>
+<br />
 <table class="table">
     <thead>
         <tr class="tablecad">
@@ -16,21 +17,21 @@
         @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.descricaoItem</td>
+                    <td style="color:#D2D2D2">@item.descricaoItem</td>
                     @switch (item.tipoGasto)
                     {
                         case "C":
-                            <td> Custo </td>
+                            <td style="color:#D2D2D2"> Custo </td>
                             break;
                         case "I":
-                            <td> Investimento </td>
+                            <td style="color:#D2D2D2"> Investimento </td>
                             break;
                         case "D":
-                            <td> Despesa </td>
+                            <td style="color:#D2D2D2"> Despesa </td>
                             break;
                     }
-                <td>@item.TipoItem.nomeTipoItem</td>
-                <td>@item.valorUnitario</td>
+                <td style="color:#D2D2D2">@item.TipoItem.nomeTipoItem</td>
+                <td style="color:#D2D2D2">@item.valorUnitario</td>
                 <td> <a href="/OrcaItem/alterPrioridade?idI=@item.idItemOrcamentario" class="btn btn-success"> Adicionar ao orçamento </a> </td>
                 <td> <a class="btn btn-warning"> Editar </a> </td>
                 <td> <a class="btn btn-danger"> Excluir </a>
@@ -41,3 +42,5 @@
         </tbody>
 </table>
 
+<br />
+<br />

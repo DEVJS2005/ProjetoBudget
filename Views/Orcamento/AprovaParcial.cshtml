@@ -3,23 +3,28 @@
     ViewBag.Title = "Tela Aprovação Parcial";
 }
 <br />
+<br />
 <div class="text-center">
-    <h1 class="titulo_orc1">Aprovação parcial do orçamento: @Model.nomeOrcamento</h1>
-</div>
+    <h1 class="titulo_orc1" style="color:white;">Aprovação parcial do orçamento: @Model.nomeOrcamento</h1>
+
 <br />
 <hr />
-<div class="text-justify">
+
 <form name="CadastroOrcamento" method="post" action="/Orcamento/AprovaParcial?idOrcamento=@Model.idOrcamento">
     <div class="form-group">
-        <label for="exampleInputEmail1" class="titulo_orc"> Motivo da aprovação parcial: </label>
+        <label for="exampleInputEmail1" class="titulo_orc" style="color:white;"> Motivo da aprovação parcial: </label>
         <br />
-        <textarea type="text" name="observacao" class="form-check-input" id="exampleCheck1" > </textarea>
+        <br />
+        <textarea type="text" name="observacao" class="form-check-input" id="exampleCheck1" style="width:1000px;height:220px;" > </textarea>
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1" class="titulo_orc"> Valor Aplicado ao orçamento: </label>
+        <br />
+        <label for="exampleInputEmail1" class="titulo_orc" style="color:white;"> Valor Aplicado ao orçamento: </label>
         <br />
         <input type="text" name="valorAplicado" class="form-check-input" id="exampleCheck1" value="@Model.valorAplicado" />
-        <label>*Obeservação: Altere ou não o valor do orçamento para o desejado.</label>
+        <br />
+        <br />
+        <label style="color: #D2D2D2;">*Observação: Altere ou não o valor do orçamento para o desejado.</label>
     </div>
     <button type="submit" class="btn btn-primary"> Registrar </button>
 </form>

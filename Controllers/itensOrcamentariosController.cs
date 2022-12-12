@@ -25,7 +25,7 @@ namespace ProjetoBudget.Controllers
 
         // GET: api/itensOrcamentarios/5
         [ResponseType(typeof(itensOrcamentarios))]
-        public async Task<IHttpActionResult> GetitensOrcamentarios(int id)
+        public async Task<IHttpActionResult> s(int id)
         {
             itensOrcamentarios itensOrcamentarios = await db.itensOrcamentarios.FindAsync(id);
             if (itensOrcamentarios == null)

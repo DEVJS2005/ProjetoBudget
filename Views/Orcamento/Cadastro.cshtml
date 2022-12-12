@@ -6,10 +6,10 @@
 <br />
 <div class="text-center">
     <h1 class="titulo_orc1">Orçamento</h1>
-</div>
+
 <br />
 <hr />
-<div class="text-justify">
+
 <form name="CadastroOrcamento" method="post" action="/Orcamento/cadastro">
     <div class="form-group">
         <label for="exampleInputEmail1" class="titulo_orc"> Nome Orçamento </label>
@@ -19,6 +19,7 @@
 
     <div class="form-group" name="idCentroGasto">
         <label for="exampleInputEmail1" class="titulo_orc"> Setor: </label>
+        <br />
         <select name="idCentroGasto" class="input_setor">
             <option> </option>
             @foreach(var item in Model)
@@ -28,6 +29,7 @@
                 </option>
             }
         </select>
+        <br />
     </div>
     <hr />
     <div name="">

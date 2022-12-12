@@ -25,17 +25,19 @@
             <br />
             <label style="color:white"> Observação: </label>
             <br />
-            <textarea class="form-check-input" type="text" name="observacao" id="flexRadioDefault2" maxlength="1000" > </textarea>
+            <textarea class="form-check-input" type="text" name="observacao" style="width:1000px; height:180px;resize:none;" id="flexRadioDefault2" maxlength="1000" placeholder="Escreva sua observação aqui:" > </textarea>
 
         </div>
         <br />
         <hr />
+        <br />
         @if (Model.itensOrcamentarios.tipoGasto == "C" || Model.itensOrcamentarios.tipoGasto == "D")
          {
             <label style="color:white;font-size:19px">Valor aplicado ao @Model.itensOrcamentarios.descricaoItem: </label>
             
             <input type="text" class="input_alter" name="total" value="" placeholder="Ex: R$1.500" />
          }
+        <br />
         <br />
         <br />
         <button type="submit" class="btn btn-success"> Salvar </button>
