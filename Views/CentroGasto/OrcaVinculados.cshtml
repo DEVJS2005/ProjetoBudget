@@ -1,0 +1,51 @@
+﻿@Model ProjetoBudget.Models.Orcamento
+@{
+    ViewBag.Title = "Listagem de itens";
+}
+<br />
+<h2 class="titulo_orc1"> Orçamentos vinculados a este centro de gasto: </h2>
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr class="list">
+            <th scope="col"> Nome Orcamento </th>
+            <th scope="col"> Valor Aplicado  </th>
+            <th scope="col"> Situação  </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.nomeOrcamento</td>
+                <td>@item.valorAplicado</td>
+                @if (item.situacao == "A")
+                {
+                    <td> Aprovado </td>
+                }
+                else if (item.situacao == "AP")
+                {
+                    <td> Aprovado Parcialmente </td>
+                }
+                else if (item.situacao == "R")
+                {
+                    <td> Reprovado </td>
+                }
+                else if (item.situacao == "PD")
+                {
+                    <td> Pendente </td>
+                }
+                else
+                {
+                    <td> Sem status no momento.... </td>
+                }
+            </tr>
+         }
+        </tbody>
+</table>
+
+<br />
+<a href="/CentroGasto/ListaItens" role="button" class="btn btn-primary"> Voltar </a>
+

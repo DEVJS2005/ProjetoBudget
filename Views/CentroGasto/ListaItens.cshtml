@@ -1,0 +1,32 @@
+﻿@Model ProjetoBudget.Models.CentroGasto
+@{
+    ViewBag.Title = "Listagem de itens";
+}
+<br />
+<h2 class="titulo_orc1"> Listagem de orçamentos criados </h2>
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr class="list">
+            <th scope="col"> Nome Centro de Gasto: </th>
+            <th scope="col">  </th>
+            <th scope="col">  </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.nomeCentroGasto</td>
+                <td> <a href="/CentroGasto/OrcaVinculados?idCG=@item.idCentroGasto" role="button" class="btn btn-primary"> Orçamentos vinculados </a></td>
+                <td> <a href="/CentroGasto/Editar?idCG=@item.idCentroGasto" role="button" class="btn btn-primary"> Editar </a></td>
+                <td> <a href="/CentroGasto/Excluir?idCG=@item.idCentroGasto" class="btn btn-danger"> Excluir </a></td>
+            </tr>
+         }
+        </tbody>
+</table>
+
+<br />
+<a href="#" class="btn btn-danger"> Voltar </a>

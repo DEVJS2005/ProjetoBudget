@@ -293,6 +293,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CentroGastoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemOrcamentarioController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -407,6 +408,9 @@
     <Content Include="Views\TipoItem\Cadastro.cshtml" />
     <Content Include="Views\TipoItem\ListaItens.cshtml" />
     <Content Include="Views\TipoItem\Editar.cshtml" />
+    <Content Include="Views\CentroGasto\Cadastro.cshtml" />
+    <Content Include="Views\CentroGasto\ListaItens.cshtml" />
+    <Content Include="Views\CentroGasto\OrcaVinculados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
