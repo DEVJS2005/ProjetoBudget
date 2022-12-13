@@ -35,7 +35,7 @@ namespace ProjetoBudget.Controllers
             {
                 idOrcamento = (int)Session["orcamento"];
             }
-
+            
             Orcamento orcamento = bd.Orcamento.Find(idOrcamento);
             itensOrcamentarios item = bd.itensOrcamentarios.Find(orcItem.idItemorcamentario);
 
@@ -58,7 +58,6 @@ namespace ProjetoBudget.Controllers
                     pedOI.total = orcItem.total;
                 }
                 
-
                 foreach (var obj in itensO.OrcaItem)
                 {
                     if (obj.itensOrcamentarios.idItemOrcamentario == item.idItemOrcamentario)
@@ -67,7 +66,7 @@ namespace ProjetoBudget.Controllers
                         if(obj.itensOrcamentarios.tipoGasto == "I")
                         {
                             obj.total = obj.quantItem * item.valorUnitario;
-                            pedOI.somaT += obj.total;
+                            obj.somaT = somaT;
                         }
                         objProduto = true;
                         break;
@@ -78,9 +77,7 @@ namespace ProjetoBudget.Controllers
 
                 if (objProduto == false)
                 {
-                    pedOI.somaT += pedOI.total;
-                    itensO.OrcaItem.Add(pedOI);
-                    
+                    itensO.OrcaItem.Add(pedOI);  
                 }
 
 

@@ -71,16 +71,5 @@ namespace Projeto_Budget.Controllers
             db.SaveChanges();
             return RedirectToAction("ListaItens");
         }
-
-        public ActionResult VerifOrca(int idI)
-        {
-            if (Session["idOrca"] != null || Session["orcamento"] != null)
-            {
-                return RedirectToAction("alterPrioridade","OrcaItem", idI);
-            }else
-            {
-                return RedirectToAction("ListaGF","Orcamento");
-            }
-        }
     }
 }

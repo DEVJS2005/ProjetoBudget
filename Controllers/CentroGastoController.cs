@@ -53,7 +53,9 @@ namespace ProjetoBudget.Controllers
 
         public ActionResult OrcaVinculados(int idCG)
         {
+
             return View(db.Orcamento.SqlQuery($"SELECT * FROM Orcamento where idCentroGasto = {idCG}"));
+
         }
     }
 }

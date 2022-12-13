@@ -14,7 +14,7 @@
         <input type="text" name="DescricaoItem" class="form-check-input" id="exampleCheck1" /><br />
         <br />
 
-        <div >
+        <div>
             <label for="exampleInputEmail1" class="titulo_cad"> Tipo de Gasto: </label>
             <br />
             <input class="form-check-input" type="radio" name="tipoGasto" id="flexRadioDefault1" value="C" onclick="alterarVisibilidade('vlrUni','Custo')"> Custo
@@ -23,8 +23,8 @@
             |
             <input class="form-check-input" type="radio" name="tipoGasto" id="flexRadioDefault1" value="I" onclick="alterarVisibilidade('vlrUni','Investimento')"> Investimento
         </div>
-        
-        
+
+
         <br />
         <br />
         <label for="exampleInputEmail1" class="titulo_cad"> Categoria item: </label>
@@ -33,7 +33,7 @@
         <select name="TipoItem" class="categ_item">
             <option>
             </option>
-           @foreach (var item in Model)
+            @foreach (var item in Model)
             {
                 <option value="@item.idTipoItem">
                     @item.nomeTipoItem
@@ -53,7 +53,7 @@
 
 
         <button type="submit" class="btn btn-block  btn-ligth"> Registrar </button>
-
+        <a href="/ItemOrcamentario/ListaItens" role="button" class="btn btn-block btn-ligth"> Voltar </a>
     </form>
 </div>
 
