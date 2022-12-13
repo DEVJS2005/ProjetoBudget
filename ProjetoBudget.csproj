@@ -293,16 +293,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\CentrosGastoController.cs" />
-    <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemOrcamentarioController.cs" />
-    <Compile Include="Controllers\itensOrcamentariosController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrcaItemController.cs" />
-    <Compile Include="Controllers\OrcaItemsController.cs" />
     <Compile Include="Controllers\OrcamentoController.cs" />
-    <Compile Include="Controllers\OrcamentosController.cs" />
+    <Compile Include="Controllers\TipoItemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -408,6 +404,9 @@
     <Content Include="Views\OrcaItem\alterOrcaItem.cshtml" />
     <Content Include="Views\Orcamento\AprovaParcial.cshtml" />
     <Content Include="Views\Orcamento\Reprova.cshtml" />
+    <Content Include="Views\TipoItem\Cadastro.cshtml" />
+    <Content Include="Views\TipoItem\ListaItens.cshtml" />
+    <Content Include="Views\TipoItem\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
