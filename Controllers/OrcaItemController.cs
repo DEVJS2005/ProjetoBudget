@@ -66,7 +66,7 @@ namespace ProjetoBudget.Controllers
                         if(obj.itensOrcamentarios.tipoGasto == "I")
                         {
                             obj.total = obj.quantItem * item.valorUnitario;
-                            obj.somaT = somaT;
+                            obj.somaT = obj.total;
                         }
                         objProduto = true;
                         break;

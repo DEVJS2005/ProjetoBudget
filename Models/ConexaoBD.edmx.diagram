@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8dbc2a60a2b34849a8a3b7c5040f9aab" Name="Diagram1">
+      <Diagram DiagramId="7cb9cb01139c4eda9276e091e251822a" Name="Diagram1">
         <EntityTypeShape EntityType="BDBudgetModel.CentroGasto" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BDBudgetModel.Funcionario" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BDBudgetModel.itensOrcamentarios" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BDBudgetModel.OrcaItem" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BDBudgetModel.Orcamento" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDBudgetModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BDBudgetModel.TipoItem" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
         <AssociationConnector Association="BDBudgetModel.FK_CentroGasto_Funcionario" ManuallyRouted="false" />
         <AssociationConnector Association="BDBudgetModel.FK_Orcamento_CentroGasto" ManuallyRouted="false" />

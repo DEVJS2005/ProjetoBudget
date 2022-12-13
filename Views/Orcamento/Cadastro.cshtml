@@ -22,7 +22,7 @@
         <br />
         <select name="idCentroGasto" class="input_setor">
             <option> </option>
-            @foreach(var item in Model)
+            @foreach (var item in Model)
             {
                 <option value="@item.idCentroGasto">
                     @item.nomeCentroGasto
@@ -49,5 +49,6 @@
     <br />
     <br />
     <button type="submit" class="btn btn-primary"> Registrar </button>
+    <a href="/Home/TelaGS" role="button" class="btn btn-primary"> Voltar</a>
 </form>
 </div>

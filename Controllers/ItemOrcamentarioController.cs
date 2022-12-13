@@ -71,5 +71,10 @@ namespace Projeto_Budget.Controllers
             db.SaveChanges();
             return RedirectToAction("ListaItens");
         }
+
+        public ActionResult Editar()
+        {
+            return View();
+        }
     }
 }
