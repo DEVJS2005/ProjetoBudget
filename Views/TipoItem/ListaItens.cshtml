@@ -19,7 +19,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.nomeTipoItem</td>
+                <td style="color:white;">@item.nomeTipoItem</td>
                 <td> <a href="/TipoItem/Editar?idTPI=@item.idTipoItem" role="button" class="btn btn-primary"> Editar </a></td>
                 <td> <a href="/TipoItem/Excluir?idTPI=@item.idTipoItem" class="btn btn-danger"> Excluir </a></td>
             </tr>
