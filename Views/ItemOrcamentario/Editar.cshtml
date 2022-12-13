@@ -1,17 +1,17 @@
-﻿@Model ProjetoBudget.Models.TipoItem
+﻿@Model ProjetoBudget.Models.itensOrcamentarios
 
 @{
-    ViewBag.Title = "Item Orçamentario";
+    ViewBag.Title = "Editar Item orcamentario";
 }
 <div class="text-center">
-    <h1 class="tituloPcad">Cadastro</h1>
+    <h1 class="tituloPcad">Editar o item @Model.descricaoItem</h1>
     <hr />
     <br />
     <br />
-    <form name="CadastroItemOrcamentario" action="/ItemOrcamentario/Cadastro" method="post">
-        <label class="titulo_cad"> Descrição do Item:  </label>
+    <form name="CadastroItemOrcamentario" action="/ItemOrcamentario/Editar?idTipoItem=@Model.idTipoItem&idI=@Model.idItemOrcamentario" method="post">
+        <label class="titulo_cad"> Descrição do Item: </label>
         <br />
-        <input type="text" name="DescricaoItem" class="form-check-input" id="exampleCheck1" /><br />
+        <input type="text" name="DescricaoItem" class="form-check-input" id="exampleCheck1" value="@Model.descricaoItem" /><br />
         <br />
 
         <div>
@@ -23,30 +23,12 @@
             |
             <input class="form-check-input" type="radio" name="tipoGasto" id="flexRadioDefault1" value="I" onclick="alterarVisibilidade('vlrUni','Investimento')"> Investimento
         </div>
-
-
         <br />
         <br />
-        <label for="exampleInputEmail1" class="titulo_cad"> Categoria item: </label>
         <br />
-
-        <select name="TipoItem" class="categ_item">
-            <option>
-            </option>
-            @foreach (var item in Model)
-            {
-                <option value="@item.idTipoItem">
-                    @item.nomeTipoItem
-                </option>
-            }
-
-        </select>
-
-        <br />
-
         <div id="vlrUni" style="display:none">
             <label> Valor Unitario: </label>
-            <input type="text" name="valorUnitario" class="form-check-input" id="exampleCheck1" />
+            <input type="text" name="valorUnitario" class="form-check-input" id="exampleCheck1" value="@Model.valorUnitario" />
         </div>
         <br />
         <br />
@@ -58,14 +40,14 @@
 
 @section Scripts{
     <script>
-        function alterarVisibilidade(id, campoClick) {
+function alterarVisibilidade(id, campoClick) {
             var display = document.getElementById(id).style.display;
             if (campoClick == "Investimento") {
                 document.getElementById(id).style.display = 'block';
             } else if (campoClick == "Custo") {
                 document.getElementById(id).style.display = 'none';
             } else { document.getElementById(id).style.display = 'none'; }
-        }
+}
     </script>
-   
+
 }

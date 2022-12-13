@@ -304,40 +304,37 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CentroGasto.cs">
-      <DependentUpon>ConexaoBD.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ConexaoBD.Context.cs">
+    <Compile Include="Models\ConexaoDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConexaoBD.Context.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ConexaoBD.cs">
+    <Compile Include="Models\ConexaoDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConexaoBD.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ConexaoBD.Designer.cs">
+    <Compile Include="Models\ConexaoDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ConexaoBD.edmx</DependentUpon>
+      <DependentUpon>ConexaoDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Funcionario.cs">
-      <DependentUpon>ConexaoBD.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\itensOrcamentarios.cs">
-      <DependentUpon>ConexaoBD.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrcaItem.cs">
-      <DependentUpon>ConexaoBD.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Orcamento.cs">
-      <DependentUpon>ConexaoBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>ConexaoBD.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TipoItem.cs">
-      <DependentUpon>ConexaoBD.tt</DependentUpon>
+      <DependentUpon>ConexaoDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -350,24 +347,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ConexaoBD.Context.tt">
+    <Content Include="Models\ConexaoDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ConexaoBD.edmx</DependentUpon>
-      <LastGenOutput>ConexaoBD.Context.cs</LastGenOutput>
+      <DependentUpon>ConexaoDB.edmx</DependentUpon>
+      <LastGenOutput>ConexaoDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ConexaoBD.tt">
+    <Content Include="Models\ConexaoDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ConexaoBD.edmx</DependentUpon>
-      <LastGenOutput>ConexaoBD.cs</LastGenOutput>
+      <DependentUpon>ConexaoDB.edmx</DependentUpon>
+      <LastGenOutput>ConexaoDB.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\ConexaoBD.edmx">
+    <EntityDeploy Include="Models\ConexaoDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ConexaoBD.Designer.cs</LastGenOutput>
+      <LastGenOutput>ConexaoDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ConexaoBD.edmx.diagram">
-      <DependentUpon>ConexaoBD.edmx</DependentUpon>
+    <Content Include="Models\ConexaoDB.edmx.diagram">
+      <DependentUpon>ConexaoDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -414,6 +411,7 @@
     <Content Include="Views\CentroGasto\Cadastro.cshtml" />
     <Content Include="Views\CentroGasto\ListaItens.cshtml" />
     <Content Include="Views\CentroGasto\OrcaVinculados.cshtml" />
+    <Content Include="Views\ItemOrcamentario\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

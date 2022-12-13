@@ -1,5 +1,7 @@
 ﻿using ProjetoBudget.Models;
+using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 
 
@@ -72,9 +74,35 @@ namespace Projeto_Budget.Controllers
             return RedirectToAction("ListaItens");
         }
 
-        public ActionResult Editar()
+        public ActionResult Editar(int idI)
         {
-            return View();
+            return View(db.itensOrcamentarios.ToList().Find(x => x.idItemOrcamentario == idI));
+        }
+
+        [HttpPost]
+        public ActionResult Editar(int idTipoItem,string DescricaoItem, string tipoGasto,double? valorUnitario,int idI)
+        {
+            itensOrcamentarios iO = new itensOrcamentarios();
+            iO.idItemOrcamentario = idI;
+            iO.descricaoItem = DescricaoItem;
+            iO.tipoGasto=tipoGasto;
+            iO.idTipoItem = idTipoItem;
+            iO.valorUnitario = valorUnitario;
+
+            db.itensOrcamentarios.AddOrUpdate(iO);
+            db.SaveChanges();
+
+            return RedirectToAction("ListaItens","ItemOrcamentario");
+
+        }
+
+        [HttpGet]
+        public ActionResult Excluir(int idI)
+        {
+            itensOrcamentarios io = db.itensOrcamentarios.Find(idI);   
+            db.itensOrcamentarios.Remove(io);
+            db.SaveChanges();
+            return RedirectToAction("ListaItens","itemOrcamentario");
         }
     }
 }

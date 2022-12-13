@@ -19,11 +19,9 @@ namespace ProjetoBudget.Models
         public Nullable<int> quantItem { get; set; }
         public string observacao { get; set; }
         public string prioridade { get; set; }
-
         public double? total { get; set; }
 
         public double? somaT { get; set; }
-
         public virtual itensOrcamentarios itensOrcamentarios { get; set; }
         public virtual Orcamento Orcamento { get; set; }
     }
