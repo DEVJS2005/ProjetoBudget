@@ -7,15 +7,15 @@
         <label> Selecione a Prioridade do item @Model.itensOrcamentarios.descricaoItem: </label>
 
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault1" value="A" onclick="alterarVisibilidade('divObs','Alta')"> Alta
+            <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault1" value="A" onclick="alterarVisibilidade('divObs','Alta')" style="color:white;"> Alta
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault2" value="M" onclick="alterarVisibilidade('divObs','Média')"> Média
+            <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault2" value="M" onclick="alterarVisibilidade('divObs','Média')"style="color:white;"> Média
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault2" value="B" onclick="alterarVisibilidade('divObs','Baixa')"> Baixa
+            <input class="form-check-input" type="radio" name="prioridade" id="flexRadioDefault2" value="B" onclick="alterarVisibilidade('divObs','Baixa')"style="color:white;"> Baixa
         </div>
 
         <div class="form-check">
@@ -23,18 +23,19 @@
         </div>
 
         <div class="form-check" id="divObs" style="display:none">
-
-            <label> Observação: </label>
-            <textarea class="form-check-input" type="text" name="observacao" id="flexRadioDefault2" maxlength="1000"> </textarea>
+            <br />
+            <label style="color:white;"> Observação: </label>
+            <br />
+            <textarea class="form-check-input" type="text" name="observacao" id="flexRadioDefault2" maxlength="1000" style="width:1000px; height:180px;resize:none;" placeholder="Escreva sua observação aqui:"> </textarea>
 
         </div>
 
         @if (Model.itensOrcamentarios.tipoGasto == "C" || Model.itensOrcamentarios.tipoGasto == "D")
         {
-            <label>Valor aplicado ao: @Model.itensOrcamentarios.descricaoItem </label>
+            <label style="color:white;">Valor aplicado ao: @Model.itensOrcamentarios.descricaoItem </label>
             <input type="text" name="total" value="@Model.total" />
         }
-
+        <br />
         <button type="submit" class="btn btn-success"> Salvar alterações </button>
     </form>
 </div>

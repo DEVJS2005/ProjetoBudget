@@ -10,12 +10,12 @@
 <table class="table">
     <thead>
         <tr class="list">
-            <th scope="col"> Nome Item </th>
-            <th scope="col"> Prioridade </th>
-            <th scope="col"> Observação </th>
-            <th scope="col"> Quantidade </th>
-            <th scope="col"> Valor aplicado </th>
-            <th scope="col">   </th>
+            <th scope="col" style="color:white;"> Nome Item </th>
+            <th scope="col" style="color:white;"> Prioridade </th>
+            <th scope="col" style="color:white;"> Observação </th>
+            <th scope="col" style="color:white;"> Quantidade </th>
+            <th scope="col" style="color:white;"> Valor aplicado </th>
+            <th scope="col" style="color:white;">   </th>
 
 
         </tr>
@@ -25,19 +25,19 @@
         @foreach (var item in Model.OrcaItem)
         {
             <tr>
-                <td>@item.itensOrcamentarios.descricaoItem</td>
+                <td style="color:white;">@item.itensOrcamentarios.descricaoItem</td>
 
                 @if (item.prioridade == "A")
                 {
-                    <td>Alta</td>
+                    <td style="color:white;">Alta</td>
                 }
                 else if (item.prioridade == "M")
                 {
-                    <td> Média </td>
+                    <td style="color:white;"> Média </td>
                 }
                 else
                 {
-                    <td> Baixa </td>
+                    <td style="color:white;"> Baixa </td>
                 }
                 <td style="color:white;">@item.observacao</td>
                 <td style="color:white;">@item.quantItem</td>

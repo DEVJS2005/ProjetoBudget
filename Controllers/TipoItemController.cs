@@ -21,12 +21,15 @@ namespace ProjetoBudget.Controllers
         [HttpPost]
         public ActionResult Cadastro(string nomeTipoItem)
         {
+            
+            
             TipoItem TPI = new TipoItem();  
             TPI.nomeTipoItem= nomeTipoItem;
             db.TipoItem.Add(TPI);
             db.SaveChanges();
 
             return RedirectToAction("listaItens");
+            
         }
         
         public ActionResult ListaItens()

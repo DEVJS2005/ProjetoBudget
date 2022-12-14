@@ -9,9 +9,9 @@
 <table class="table">
     <thead>
         <tr class="list">
-            <th scope="col"> Nome Orcamento </th>
-            <th scope="col"> Valor Aplicado  </th>
-            <th scope="col"> Situação  </th>
+            <th scope="col" style="color:white;"> Nome Orcamento </th>
+            <th scope="col" style="color:white;"> Valor Aplicado  </th>
+            <th scope="col" style="color:white;"> Situação  </th>
         </tr>
     </thead>
     <tbody>
@@ -19,27 +19,27 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.nomeOrcamento</td>
-                <td>@item.valorAplicado</td>
+                <td style="color:white;">@item.nomeOrcamento</td>
+                <td style="color:white;">@item.valorAplicado</td>
                 @if (item.situacao == "A")
                 {
-                    <td> Aprovado </td>
+                    <td style="color:white;"> Aprovado </td>
                 }
                 else if (item.situacao == "AP")
                 {
-                    <td> Aprovado Parcialmente </td>
+                    <td style="color:white;"> Aprovado Parcialmente </td>
                 }
                 else if (item.situacao == "R")
                 {
-                    <td> Reprovado </td>
+                    <td style="color:white;"> Reprovado </td>
                 }
                 else if (item.situacao == "PD")
                 {
-                    <td> Pendente </td>
+                    <td style="color:white;"> Pendente </td>
                 }
                 else
                 {
-                    <td> Sem status no momento.... </td>
+                    <td style="color:white;"> Sem status no momento.... </td>
                 }
             </tr>
          }

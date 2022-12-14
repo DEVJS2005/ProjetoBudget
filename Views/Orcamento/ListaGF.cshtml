@@ -12,12 +12,12 @@
 <table class="table">
     <thead>
         <tr class="list">
-            <th scope="col"> Nome orçamento</th>
-            <th scope="col"> Valor Aplicado  </th>
-            <th scope="col"> Data de inicio </th>
-            <th scope="col"> Data de fim </th>
-            <th scope="col"> Aprovação </th>
-            <th scope="col">  </th>
+            <th scope="col" style="color:white;"> Nome orçamento</th>
+            <th scope="col" style="color:white;"> Valor Aplicado  </th>
+            <th scope="col" style="color:white;"> Data de inicio </th>
+            <th scope="col" style="color:white;"> Data de fim </th>
+            <th scope="col" style="color:white;"> Aprovação </th>
+            <th scope="col" style="color:white;">  </th>
         </tr>
     </thead>
     <tbody>
@@ -27,13 +27,13 @@
             <tr>
                 @if (item.situacao == null || item.situacao == "PD")
                 {
-                    <th scope="row">@item.nomeOrcamento</th>
+                    <th scope="row" style="color:white;">@item.nomeOrcamento</th>
 
-                    <td>@item.valorAplicado</td>
+                    <td style="color:white;">@item.valorAplicado</td>
 
-                    <td>@item.dataInicio</td>
+                    <td style="color:white;">@item.dataInicio</td>
 
-                    <td>@item.dataFim</td>
+                    <td style="color:white;">@item.dataFim</td>
                     <td>
                         <div>
                             <br />
