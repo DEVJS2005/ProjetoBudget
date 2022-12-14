@@ -41,6 +41,12 @@ namespace ProjetoBudget.Controllers
                 return View("TelaLogin");
             }
         }
-        
+        public ActionResult logout()
+        {
+            Session["LoginGF"] = null;
+            Session["LoginGS"] = null ;
+
+            return RedirectToAction("TelaLogin","Login");
+        }
     }
 }

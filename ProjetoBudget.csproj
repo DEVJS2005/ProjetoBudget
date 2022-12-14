@@ -412,6 +412,7 @@
     <Content Include="Views\CentroGasto\ListaItens.cshtml" />
     <Content Include="Views\CentroGasto\OrcaVinculados.cshtml" />
     <Content Include="Views\ItemOrcamentario\Editar.cshtml" />
+    <Content Include="Views\OrcaItem\ListaItensGF.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

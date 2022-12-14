@@ -20,7 +20,7 @@
     </thead>
     <tbody>
         @foreach(var item in Model){
-            if (item.situacao == null)
+            if (item.situacao == null || item.situacao == "AP" || item.situacao == "A" || item.situacao == "R")
             {
                 <tr>
                     <th scope="row" style="color:white;"> @item.nomeOrcamento </th>

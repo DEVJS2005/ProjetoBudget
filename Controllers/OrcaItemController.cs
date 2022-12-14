@@ -93,10 +93,11 @@ namespace ProjetoBudget.Controllers
         public ActionResult EndOrcamento() 
         {
             itensOrcamentarios itensO = Session["carrinho"] != null ? (itensOrcamentarios)Session["carrinho"] : new itensOrcamentarios();
-
             foreach (var item in itensO.OrcaItem)
             {
                 OrcaItem OI = new OrcaItem();
+                OI.itensOrcamentarios = bd.itensOrcamentarios.Find(item.idItemorcamentario);
+                OI.Orcamento = bd.Orcamento.Find(item.idorcamento);
                 OI.idorcamento = item.idorcamento;
                 OI.idItemorcamentario = item.idItemorcamentario;
                 OI.quantItem = item.quantItem;
@@ -221,6 +222,12 @@ namespace ProjetoBudget.Controllers
                 }
             }
             return View();
+        }
+
+        public ActionResult ListaItensGF()
+        {
+            int idOrca = (int)Session["idOrca"];
+            return View(bd.OrcaItem.SqlQuery($"SELECT * FROM OrcaItem where idorcamento = {idOrca}").ToList());
         }
     }
 }

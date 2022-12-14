@@ -1,0 +1,56 @@
+﻿@Model ProjetoBudget.Models.OrcaItem
+@{
+    ViewBag.Title = "Listagem de itens";
+}
+
+<br />
+<h2 class="titulo_orc1"> Listagem de itens do orçamento </h2>
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr class="list">
+            <th scope="col" style="color:white;"> Nome Item </th>
+            <th scope="col" style="color:white;"> Prioridade </th>
+            <th scope="col" style="color:white;"> Observação </th>
+            <th scope="col" style="color:white;"> Quantidade </th>
+            <th scope="col" style="color:white;"> Valor aplicado </th>
+            <th scope="col" style="color:white;">   </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+            {
+                <tr>
+                    <td style="color:white;">@Model.itensOrcamentarios.descricaoItem</td>
+
+                    @if (Model.prioridade == "A")
+                    {
+                        <td style="color:white;">Alta</td>
+                    }
+                    else if (Model.prioridade == "M")
+                    {
+                        <td style="color:white;"> Média </td>
+                    }
+                    else
+                    {
+                        <td style="color:white;"> Baixa </td>
+                    }
+                    <td style="color:white;">@Model.observacao</td>
+                    <td style="color:white;">@Model.quantItem</td>
+                    <td style="color:white;"> @Model.total  </td>
+                    <td> </td>
+                    <td>
+                        <a href="/OrcaItem/alterOrcaItem?idOrcamento=@Model.idorcamento&idItemOrc=@Model.itensOrcamentarios.idItemOrcamentario" role="button" class="btn btn-primary"> Alterar </a>
+                        <a href="" role="button" class="btn btn-danger"> Remover </a>
+                    </td>
+
+                </tr>
+            }
+               
+        </tbody>
+</table>
+<br />
+

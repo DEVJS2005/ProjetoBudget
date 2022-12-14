@@ -95,7 +95,7 @@ namespace Projeto_Budget.Controllers
             if (Session["LoginGF"] != null)
             {
                 Session["idOrca"] = id;
-                return RedirectToAction("ListaItens", "ItemOrcamentario");
+                return RedirectToAction("ListaItensGF","OrcaItem");
             }
             else if (Session["LoginGS"] != null)
             {
