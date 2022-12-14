@@ -21,7 +21,7 @@
           <Property Name="nomeFuncionario" Type="varchar" MaxLength="35" Nullable="false" />
           <Property Name="matricula" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="senha" Type="varchar" MaxLength="8" Nullable="false" />
-          <Property Name="cargo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="cargo" Type="varchar" MaxLength="2" Nullable="false" />
         </EntityType>
         <EntityType Name="itensOrcamentarios">
           <Key>
@@ -52,7 +52,7 @@
           <Property Name="nomeOrcamento" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="dataInicio" Type="date" Nullable="false" />
           <Property Name="dataFim" Type="date" Nullable="false" />
-          <Property Name="situacao" Type="varchar" MaxLength="2" />
+          <Property Name="situacao" Type="char" MaxLength="2" />
           <Property Name="observacao" Type="varchar" MaxLength="500" />
           <Property Name="valorAplicado" Type="float" Nullable="false" />
           <Property Name="idcentrogasto" Type="int" Nullable="false" />
@@ -175,7 +175,7 @@
           <Property Name="nomeFuncionario" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="matricula" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="senha" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="cargo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cargo" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CentroGasto" Relationship="Self.FK_CentroGasto_Funcionario" FromRole="Funcionario" ToRole="CentroGasto" />
         </EntityType>
         <EntityType Name="itensOrcamentarios">
@@ -211,7 +211,7 @@
           <Property Name="nomeOrcamento" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="dataInicio" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="dataFim" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="situacao" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="situacao" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="observacao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="valorAplicado" Type="Double" Nullable="false" />
           <Property Name="idcentrogasto" Type="Int32" Nullable="false" />
