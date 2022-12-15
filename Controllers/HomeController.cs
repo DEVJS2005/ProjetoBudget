@@ -46,7 +46,7 @@ namespace Projeto_Budget.Controllers
             }
             else if(Session["LoginGS"] != null)
             {
-                return RedirectToAction("TelaGS", "Home");
+                return View("TelaGS", (Funcionario)Session["LoginGS"]);
             }
             else
             {
@@ -64,7 +64,7 @@ namespace Projeto_Budget.Controllers
             }
             else if (Session["LoginGF"] != null)
             {
-                return RedirectToAction("TelaGF ", "Home");
+                return View("TelaGF", (Funcionario)Session["LoginGF"]);
             }
             else
             {
